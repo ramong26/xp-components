@@ -1,0 +1,24 @@
+@use "variables" as v;
+
+// 반응형 미디어 쿼리 믹스인
+@mixin mq($breakpoint) {
+  @if map-has-key(v.$breakpoints, $breakpoint) {
+    @media (min-width: map-get(v.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+// 타이포그래피 믹스인
+@mixin text-style($size) {
+  font-size: map-get(map-get(v.$typography, $size), fontSize);
+  line-height: map-get(map-get(v.$typography, $size), lineHeight);
+}
+
+// flex 믹스인
+@mixin flex-box($justify: center, $align: center, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
