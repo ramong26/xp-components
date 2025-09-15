@@ -18,15 +18,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
-
-      - name: Ensure pnpm is installed
-        run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
