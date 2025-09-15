@@ -25,6 +25,9 @@ jobs:
         with:
           version: 8
 
+      - name: Ensure pnpm is installed
+        run: npm install -g pnpm
+
       - name: Install dependencies
         run: pnpm install
 
