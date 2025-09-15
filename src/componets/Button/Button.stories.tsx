@@ -14,7 +14,6 @@ export const Primary: Story = {
   args: {
     children: '클릭',
     variant: 'default',
-    selected: true,
     color: 'rgba(255, 0, 0, 1)'
   }
 };
