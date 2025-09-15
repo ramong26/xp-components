@@ -1,5 +1,7 @@
 const sassPlugin = require('esbuild-plugin-sass');
-
-esbuild.build({
+require('esbuild').build({
+  entryPoints: ['src/index.tsx'],
+  bundle: true,
+  outdir: 'dist',
   plugins: [sassPlugin()]
 });
