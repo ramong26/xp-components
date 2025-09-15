@@ -1,4 +1,4 @@
-@use "variables" as v;
+@use 'variables' as v;
 
 // 반응형 미디어 쿼리 믹스인
 @mixin mq($breakpoint) {
@@ -10,9 +10,10 @@
 }
 
 // 타이포그래피 믹스인
-@mixin text-style($size) {
+@mixin text-style($size, $weight: 400) {
   font-size: map-get(map-get(v.$typography, $size), fontSize);
   line-height: map-get(map-get(v.$typography, $size), lineHeight);
+  font-weight: $weight;
 }
 
 // flex 믹스인
