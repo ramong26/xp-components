@@ -1,16 +1,23 @@
-import React from "react";
-import "./Button.scss";
+import React from 'react';
+import './Button.scss';
+
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary";
+  selected?: boolean;
+  variant?: 'default' | 'secondary';
 };
 
 const Button: React.FC<ButtonProps> = ({
   children,
-  variant = "primary",
+  variant = 'default',
   ...rest
 }) => {
+  // xp-btn, secondary 클래스 동적 조합
+  const classNames = ['xp-btn', variant === 'secondary' ? 'secondary' : '']
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <button {...rest} data-variant={variant} className="xp-btn">
+    <button className={classNames} {...rest}>
       {children}
     </button>
   );
