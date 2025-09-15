@@ -1,0 +1,43 @@
+name: '📝 PR Template (Solo)'
+description: '혼자 쓰는 컴포넌트 PR 템플릿'
+labels: ['pr']
+body:
+  - type: input
+    id: title
+    attributes:
+      label: 'PR 제목'
+      description: '이번 PR을 한 줄로 요약'
+      placeholder: '예: Button 컴포넌트 disabled 버그 수정'
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: '변경 내용'
+      description: '무엇을 바꿨는지 간단하게 작성'
+      placeholder: "- Button disabled 상태 클릭 방지\n- 관련 테스트 추가"
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: '목적 / 이유'
+      description: '왜 바꿨는지 한두 줄로'
+      placeholder: '예: 사용자 경험 개선, 버그 수정'
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: '확인 사항'
+      description: 'PR 전에 체크할 항목'
+      options:
+        - label: '빌드 통과 ✅'
+          value: 'build_passed'
+        - label: '테스트 통과 ✅'
+          value: 'tests_passed'
+        - label: '불필요한 console.log 제거 ✅'
+          value: 'console_cleaned'
