@@ -2,7 +2,6 @@ import React from 'react';
 import './Button.scss';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  selected?: boolean;
   variant?: 'default' | 'secondary';
 };
 
