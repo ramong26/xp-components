@@ -12,7 +12,7 @@ const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   // btn, secondary 클래스 동적 조합
-  const classNames = ['btn', variant === 'secondary' ? 'secondary' : '']
+  const classNames = ['btn', variant !== 'default' && variant]
     .filter(Boolean)
     .join(' ');
 
