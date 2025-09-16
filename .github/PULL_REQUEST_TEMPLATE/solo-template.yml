@@ -1,6 +1,6 @@
 name: '📝 PR Template (Solo)'
 description: '혼자 쓰는 컴포넌트 PR 템플릿'
-labels: ['pr']
+labels: ['feat']
 body:
   - type: input
     id: title
