@@ -5,14 +5,7 @@
 .input_wrapper {
   position: relative;
   cursor: pointer;
-  box-shadow:
-    inset 1px 1px 0 0 s.color(white),
-    1px 1px 0 0 s.color(gray-600),
-    2px 2px 0 0 s.color(gray-900);
-  transition:
-    background-color 0.12s,
-    color 0.12s,
-    box-shadow 0.12s;
+  width: 100%;
 }
 
 // 인풋 필드
@@ -44,19 +37,18 @@
       2px 2px 0 0 s.color(gray-900); 
   }
 
- 
   &:active {
-    background: #bbbbbb;
+    background: s.color(gray-300);
     color: s.color(gray-900);
     box-shadow:
       inset 1px 1px 0 0 s.color(white),
-      1px 1px 0 0 #868686,
+      1px 1px 0 0 s.color(gray-600),
       0px 0px 0 0 s.color(gray-900);
   }
 
   @media (max-width: 640px) {
     @include s.text-style-extended(md, 400, gray-900);
-    padding: 5px 12px;
+    padding: 5px 13px;
   }
 }
 
@@ -79,7 +71,7 @@
 // focus 시 placeholder 스타일
 .input_field:focus + .input_placeholder,
 .input_field:not(:placeholder-shown) + .input_placeholder {
-  @include s.text-style-extended(xs, 400, gray-900);
+
   background: s.color(white);
   padding: 0 4px;
 }
