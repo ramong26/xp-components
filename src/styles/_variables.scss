@@ -6,9 +6,16 @@ $colors: (
   gray-300: #e0e0e0,
   gray-400: #bdbdbd,
   gray-500: #9e9e9e,
+  gray-600: #757575,
+  gray-700: #616161,
+  gray-800: #424242,
   gray-900: #212121,
+
+  // 빨강 버튼
   red_btn: #d43c3c,
-  red_btn_hover: #b92a2a
+  red_btn_active: #a12222,
+  red_btn_hover: #b92a2a,
+  red_btn_shadow: #7a1818
 );
 
 // 타이포그래피 변수
