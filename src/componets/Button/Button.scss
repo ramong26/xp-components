@@ -25,11 +25,11 @@
       2px 2px 0 0 s.color(gray-900);
   }
   &:active {
-    background: #bbbbbb;
+    background: s.color(gray-300);
     color: s.color(gray-900);
     box-shadow:
       inset 1px 1px 0 0 s.color(white),
-      1px 1px 0 0 #868686,
+        1px 1px 0 0 s.color(gray-600),
       0px 0px 0 0 s.color(gray-900);
   }
 

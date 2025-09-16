@@ -36,9 +36,9 @@
   height: 18px;
   border-radius: 0;
   border: 2px solid s.color(gray-400);
-  background: s.color(white);
+  background: s.color(gray-300);
   cursor: pointer;
-  transition:
+  transition: 
     background-color 0.2s,
     border-color 0.2s;
 
@@ -46,6 +46,7 @@
     ~ .checkbox_png {
       opacity: 1;
     }
+    border: 2px solid s.color(gray-900);
   }
 
   @media (max-width: 640px) {
