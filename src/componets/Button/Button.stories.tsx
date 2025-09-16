@@ -12,8 +12,16 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    children: '클릭',
+    children: 'Button',
     variant: 'default',
+    color: 'rgba(255, 0, 0, 1)'
+  }
+};
+
+export const Secondary: Story = {
+  args: {
+    children: 'Button',
+    variant: 'secondary',
     color: 'rgba(255, 0, 0, 1)'
   }
 };

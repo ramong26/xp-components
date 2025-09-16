@@ -1,22 +1,36 @@
+@use 'sass:map';
 @use 'variables' as v;
+@use 'functions' as f;
 
-// 반응형 미디어 쿼리 믹스인
+// 반응형 미디어 쿼리
 @mixin mq($breakpoint) {
-  @if map-has-key(v.$breakpoints, $breakpoint) {
-    @media (min-width: map-get(v.$breakpoints, $breakpoint)) {
+  @if map.has-key(v.$breakpoints, $breakpoint) {
+    @media (min-width: map.get(v.$breakpoints, $breakpoint)) {
       @content;
     }
   }
 }
 
-// 타이포그래피 믹스인
+// 기본 타이포
 @mixin text-style($size, $weight: 400) {
-  font-size: map-get(map-get(v.$typography, $size), fontSize);
-  line-height: map-get(map-get(v.$typography, $size), lineHeight);
+  $scale: map.get(v.$typography, $size);
+  @if $scale == null {
+    @error "Unknown typography scale: #{$size}";
+  }
+  font-size: map.get($scale, fontSize);
+  line-height: map.get($scale, lineHeight);
   font-weight: $weight;
 }
 
-// flex 믹스인
+// 확장 타이포 (색상)
+@mixin text-style-extended($size, $weight: 400, $color: null) {
+  @include text-style($size, $weight);
+  @if $color != null {
+    color: f.color($color);
+  }
+}
+
+// flex
 @mixin flex-box($justify: center, $align: center, $direction: row) {
   display: flex;
   flex-direction: $direction;
