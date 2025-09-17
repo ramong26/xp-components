@@ -13,18 +13,21 @@ const Chips: React.FC<ChipsProps> = ({
   ...rest
 }) => {
   return (
-    <div className={`chip ${selected ? 'selected' : ''}`} {...rest}>
+    <div className={`chip${selected ? ' selected' : ''}`} {...rest}>
       <span className="chip-label">{children}</span>
-      <button
-        type="button"
-        className="chip-remove"
-        onClick={(e) => {
-          e.stopPropagation();
-          onRemove?.();
-        }}
-      >
-        ×
-      </button>
+      {onRemove && (
+        <button
+          type="button"
+          className="chip-remove"
+          aria-label="Remove chip"
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemove();
+          }}
+        >
+          ×
+        </button>
+      )}
     </div>
   );
 };

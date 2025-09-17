@@ -34,7 +34,7 @@ export const Selected: Story = {
 export const WithRemove: Story = {
   args: {
     children: 'Chips with Remove',
-    onRemove: () => alert('Remove clicked'),
+    onRemove: () => {},
     selected: false
   }
 };

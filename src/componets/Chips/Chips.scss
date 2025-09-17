@@ -1,6 +1,8 @@
 @use '../../styles/index' as s;
 @use 'sass:map';
 
+$paper-texture: url('../../assets/paper.png');
+
 .chip {
   display: inline-flex;
   align-items: center;
@@ -8,7 +10,7 @@
   padding: 0.3rem 0.8rem;
   border: 2px solid #000;
   border-radius: 0;
-  background: #fffbea url('../../assets/paper.png');
+  background: #fffbea $paper-texture;
   background-size: cover;
   color: #111;
   font-size: 0.9rem;
@@ -19,7 +21,7 @@
   transition: all 0.15s ease-in-out;
 
   &:hover {
-    background: #fffae0 url('../../assets/paper.png');
+    background: #fffbea $paper-texture;
     background-size: cover;
     border-color: #c00;
     color: #c00;
