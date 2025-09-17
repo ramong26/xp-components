@@ -1,8 +1,6 @@
 @use '../../styles/index' as s;
 @use 'sass:map';
 
-$paper-texture: url('/assets/paper.png');
-
 .chip {
   width: fit-content;
   height: fit-content;
@@ -10,7 +8,7 @@ $paper-texture: url('/assets/paper.png');
   padding: 0.3rem 0.8rem;
   border: 2px solid s.color(black);
   border-radius: 0;
-  background: s.color(paper-background) $paper-texture;
+  background: s.color(paper-background);
   background-size: cover;
   cursor: pointer;
   transition: all 0.15s ease-in-out;

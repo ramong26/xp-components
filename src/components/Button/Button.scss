@@ -1,10 +1,8 @@
 @use '../../styles/index' as s;
 @use 'sass:map';
 
-$paper-texture: url('/assets/paper.png');
-
 .btn {
-  background: s.color(paper-background) $paper-texture;
+  background: s.color(paper-background);
   background-size: cover;
   font-family: 'Times New Roman', serif;
   @include s.text-style-extended(md, 800, gray-900);
@@ -30,7 +28,7 @@ $paper-texture: url('/assets/paper.png');
 
 // 빨강 버튼 (secondary)
 .btn.secondary {
-  background: s.color(red-500) $paper-texture;
+  background: s.color(red-500);
   background-size: cover;
   border-color: s.color(black);
   font-family: 'Times New Roman', serif;
@@ -43,7 +41,7 @@ $paper-texture: url('/assets/paper.png');
   &:hover,
   &:focus,
   &:active {
-    background: s.color(red-0) $paper-texture;
+    background: s.color(red-0);
     background-size: cover;
     color: s.color(black);
     border-color: s.color(black);

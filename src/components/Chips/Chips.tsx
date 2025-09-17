@@ -1,5 +1,6 @@
 import React from 'react';
 import './Chips.scss';
+import paperTexture from '../../../public/assets/paper.png';
 
 export interface ChipsProps extends React.HTMLAttributes<HTMLDivElement> {
   onRemove?: () => void;
@@ -16,6 +17,7 @@ const Chips: React.FC<ChipsProps> = ({
 }) => {
   return (
     <div
+      style={{ backgroundImage: `url(${paperTexture})` }}
       className={`chip${selected ? ' selected' : ''}`}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}

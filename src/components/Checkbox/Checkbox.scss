@@ -1,8 +1,6 @@
 @use '../../styles/index' as s;
 @use 'sass:map';
 
-$paper-texture: url('/assets/paper.png');
-
 .checkbox {
   display: flex;
   align-items: center;
@@ -13,7 +11,7 @@ $paper-texture: url('/assets/paper.png');
 
   .checkbox_input {
     appearance: none;
-    background: s.color(paper-background) $paper-texture;
+    background: s.color(paper-background);
     background-size: cover;
     width: 16px;
     height: 16px;
@@ -40,7 +38,7 @@ $paper-texture: url('/assets/paper.png');
     }
 
     &:checked {
-      background: s.color(paper-background) $paper-texture;
+      background: s.color(paper-background);
       background-size: cover;
       border-color: s.color(red-900);
     }

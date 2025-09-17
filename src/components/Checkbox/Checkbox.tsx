@@ -1,5 +1,6 @@
 import React from 'react';
 import './Checkbox.scss';
+import paperTexture from '../../../public/assets/paper.png';
 
 export interface CheckboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -12,7 +13,13 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, ...rest }) => {
 
   return (
     <label htmlFor={id} className="checkbox">
-      <input id={id} type="checkbox" className="checkbox_input" {...rest} />
+      <input
+        id={id}
+        type="checkbox"
+        className="checkbox_input"
+        {...rest}
+        style={{ backgroundImage: `url(${paperTexture})` }}
+      />
       {label}
     </label>
   );

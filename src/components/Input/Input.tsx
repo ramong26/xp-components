@@ -1,5 +1,6 @@
 import React, { useId } from 'react';
 import './Input.scss';
+import paperTexture from '../../../public/assets/paper.png';
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -24,13 +25,18 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="input_wrapper">
       <input
+        style={{ backgroundImage: `url(${paperTexture})` }}
         type={type}
         className={`input_field ${classNames}`}
         id={id}
         {...rest}
       />
       {variant === 'title' && label && (
-        <label htmlFor={id} className="input_placeholder">
+        <label
+          style={{ backgroundImage: `url(${paperTexture})` }}
+          htmlFor={id}
+          className="input_placeholder"
+        >
           {label}
         </label>
       )}

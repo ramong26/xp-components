@@ -1,8 +1,6 @@
 @use '../../styles/index' as s;
 @use 'sass:map';
 
-$paper-texture: url('/assets/paper.png');
-
 .input_wrapper {
   position: relative;
   cursor: text;
@@ -18,8 +16,7 @@ $paper-texture: url('/assets/paper.png');
   font-family: 'Times New Roman', serif;
   border: 2px solid s.color(black);
   border-radius: 0;
-  background-color: s.color(paper-background);
-  background-image: $paper-texture;
+  background: s.color(paper-background);
   background-size: cover;
   color: s.color(gray-900);
   @include s.text-style-extended(md, 800, gray-900);
