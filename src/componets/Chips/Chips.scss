@@ -1,0 +1,61 @@
+@use '../../styles/index' as s;
+@use 'sass:map';
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 0.8rem;
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fffbea url('../../assets/paper.png');
+  background-size: cover;
+  color: #111;
+  font-size: 0.9rem;
+  font-family: 'Times New Roman', serif;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    background: #fffae0 url('../../assets/paper.png');
+    background-size: cover;
+    border-color: #c00;
+    color: #c00;
+    text-shadow: 1px 1px #fff;
+  }
+
+  &.selected {
+    background: #ff0;
+    border-color: #000;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+  }
+}
+
+.chip-label {
+  margin-right: 0.5rem;
+}
+
+.chip-remove {
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-left: 2px solid #000;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    color: #c00;
+    background: #fff;
+  }
+}
