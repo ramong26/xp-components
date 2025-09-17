@@ -7,15 +7,13 @@ import Chips from './Chips';
 describe('Chips 컴포넌트', () => {
   test('Chips 렌더링 확인', () => {
     render(<Chips>Chips</Chips>);
-    const chipElement = screen.getByText('Chips');
-    expect(chipElement).toBeInTheDocument();
+    expect(screen.getByText('Chips')).toBeInTheDocument();
   });
 
   test('Chips 클릭 이벤트', async () => {
     const onClick = vi.fn();
     render(<Chips onClick={onClick}>Clickable Chips</Chips>);
-    const chipElement = screen.getByText('Clickable Chips');
-    await userEvent.click(chipElement);
+    await userEvent.click(screen.getByText('Clickable Chips'));
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
@@ -51,10 +49,10 @@ describe('Chips 컴포넌트', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
-  test('onRemove가 없을 때 버튼 클릭해도 에러 없음', async () => {
+  test('onRemove가 없을 때 버튼 없음', () => {
     render(<Chips>Test Chips</Chips>);
-    const removeButton = screen.getByRole('button', { name: 'Remove chip' });
-    await userEvent.click(removeButton);
+    const removeButton = screen.queryByRole('button', { name: 'Remove chip' });
+    expect(removeButton).toBeNull();
   });
 
   test('selected가 false일 때 클래스 없음', () => {
