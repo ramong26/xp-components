@@ -1,0 +1,78 @@
+@use '../../styles/index' as s;
+@use 'sass:map';
+
+.select {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+}
+
+.select_button {
+  width: 100%;
+  padding: 10px;
+  background: s.color(gray-300);
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    inset 1px 1px 0 0 s.color(white),
+    1px 1px 0 0 s.color(gray-600),
+    2px 2px 0 0 s.color(gray-900);
+  transition:
+    background-color 0.12s,
+    color 0.12s,
+    box-shadow 0.12s;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    color: s.color(gray-900);
+    box-shadow:
+      inset 1px 1px 0 0 s.color(white),
+      2px 2px 0 0 s.color(gray-900);
+  }
+
+  &:active {
+    background: s.color(gray-300);
+    color: s.color(gray-900);
+    box-shadow:
+      inset 1px 1px 0 0 s.color(white),
+      1px 1px 0 0 s.color(gray-600),
+      0px 0px 0 0 s.color(gray-900);
+  }
+
+  @media (max-width: 640px) {
+    @include s.text-style-extended(md, 400, gray-900);
+    padding: 5px 13px;
+  }
+}
+
+.select_list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: s.color(gray-300);
+  color: s.color(gray-900);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0 0;
+  z-index: 10;
+  box-shadow:
+    inset 1px 1px 0 0 s.color(white),
+    1px 1px 0 0 s.color(gray-600),
+    2px 2px 0 0 s.color(gray-900);
+  transition:
+    background-color 0.12s,
+    color 0.12s,
+    box-shadow 0.12s;
+}
+
+.select_item {
+  padding: 8px 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: s.color(gray-200);
+  }
+}
