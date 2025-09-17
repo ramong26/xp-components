@@ -6,7 +6,7 @@
   cursor: text;
   width: fit-content;
   height: fit-content;
-  @include s.flex-box(center, center, collumn);
+  @include s.flex-box(center, center, column);
 }
 
 // 인풋 필드

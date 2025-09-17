@@ -4,7 +4,7 @@ import paperTexture from '../../../public/assets/paper.png';
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string; // label을 optional로 만듦
+  label?: string;
   variant?: 'default' | 'title';
 }
 
@@ -18,16 +18,15 @@ const Input: React.FC<InputProps> = ({
   const reactId = useId();
   const id = propId || reactId;
 
-  const classNames = ['input', variant !== 'default' && variant]
-    .filter(Boolean)
-    .join(' ');
+  // variant가 title일 때만 클래스 추가
+  const classNames = variant === 'title' ? 'input_field title' : 'input_field';
 
   return (
     <div className="input_wrapper">
       <input
         style={{ backgroundImage: `url(${paperTexture})` }}
         type={type}
-        className={`input_field ${classNames}`}
+        className={classNames}
         id={id}
         {...rest}
       />

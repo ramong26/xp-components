@@ -33,8 +33,6 @@
     &:hover,
     &:active {
       border-color: s.color(red-900);
-      color: s.color(red-900);
-      text-shadow: 1px 1px s.color(white);
     }
 
     &:checked {
