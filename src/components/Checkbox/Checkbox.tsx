@@ -13,9 +13,9 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, ...rest }) => {
   return (
     <label htmlFor={id} className="checkbox">
       <input id={id} type="checkbox" className="checkbox_input" {...rest} />
-      <span className="checkbox_png" />
       {label}
     </label>
   );
 };
+
 export default Checkbox;
