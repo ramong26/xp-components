@@ -17,7 +17,11 @@ const Button: React.FC<ButtonProps> = ({
     .join(' ');
 
   return (
-    <button className={classNames} {...rest}>
+    <button
+      className={classNames}
+      {...rest}
+      style={{ backgroundImage: 'url(/assets/paper.png)' }}
+    >
       {children}
     </button>
   );

@@ -1,0 +1,66 @@
+@use '../../styles/index' as s;
+@use 'sass:map';
+
+.input_wrapper {
+  position: relative;
+  cursor: text;
+  width: fit-content;
+  height: fit-content;
+  @include s.flex-box(center, center, column);
+}
+
+// 인풋 필드
+.input_field {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  font-family: 'Times New Roman', serif;
+  border: 2px solid s.color(black);
+  border-radius: 0;
+  background: s.color(paper-background);
+  background-size: cover;
+  color: s.color(gray-900);
+  @include s.text-style-extended(md, 800, gray-900);
+  transition: all 0.15s ease-in-out;
+  box-sizing: border-box;
+
+  &:hover {
+    text-shadow: 1px 1px s.color(white);
+  }
+
+  &:focus {
+    outline: none;
+    text-shadow: 1px 1px s.color(white);
+  }
+
+  &:active {
+    border-color: s.color(black);
+    color: s.color(gray-900);
+    text-shadow: none;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0.3rem 0.6rem;
+    @include s.text-style-extended(md, 400, gray-900);
+  }
+}
+
+// placeholder 스타일
+.input_placeholder {
+  position: absolute;
+  left: 8px;
+  top: -10px;
+  font-family: 'Times New Roman', serif;
+  border: 2px solid s.color(black);
+  @include s.text-style-extended(xs, 400, gray-900);
+  background: s.color(paper-background);
+  padding: 0 4px;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+// focus 시 placeholder 스타일
+.input_field:focus + .input_placeholder,
+.input_field:not(:placeholder-shown) + .input_placeholder {
+  background: s.color(paper-background);
+  padding: 0 4px;
+}

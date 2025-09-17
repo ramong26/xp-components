@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import type { KeyboardEvent } from 'react';
 import './Select.scss';
+import paperTexture from '../../../public/assets/paper.png';
 
 export interface SelectProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
@@ -21,6 +22,7 @@ const Select: React.FC<SelectProps> = ({
   const [focusedIdx, setFocusedIdx] = useState<number | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const ulRef = useRef<HTMLUListElement>(null);
+
   //  외부 영역 클릭 시 닫기
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -79,6 +81,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <div className="select" ref={rootRef}>
       <button
+        style={{ backgroundImage: `url(${paperTexture})` }}
         {...rest}
         className="select_button"
         onClick={() => setOpen((v) => !v)}
@@ -93,6 +96,7 @@ const Select: React.FC<SelectProps> = ({
       </button>
       {open && (
         <ul
+          style={{ backgroundImage: `url(${paperTexture})` }}
           className="select_list"
           role="listbox"
           id="select-list"

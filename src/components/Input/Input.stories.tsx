@@ -10,36 +10,46 @@ const meta: Meta<typeof Input> = {
 export default meta;
 type Story = StoryObj<typeof Input>;
 
+export const TitleVariant: Story = {
+  args: {
+    label: '타이틀 입력',
+    id: 'input-title',
+    type: 'text',
+    placeholder: '타이틀 입력',
+    variant: 'title'
+  }
+};
+
 export const Text: Story = {
   args: {
-    label: 'Text 입력',
     id: 'input-text',
     type: 'text',
-    placeholder: '텍스트 입력'
+    placeholder: '텍스트 입력',
+    variant: 'default'
   }
 };
 
 export const Password: Story = {
   args: {
-    label: '비밀번호 입력',
     id: 'input-password',
     type: 'password',
-    placeholder: '비밀번호 입력'
+    placeholder: '비밀번호 입력',
+    variant: 'default'
   }
 };
 
 export const Email: Story = {
   args: {
-    label: '이메일 입력',
     id: 'input-email',
     type: 'email',
-    placeholder: '이메일 입력'
+    placeholder: '이메일 입력',
+    variant: 'default'
   }
 };
 
 export const AutoId: Story = {
   args: {
-    label: '자동 ID Input',
-    placeholder: 'id 없이 렌더링'
+    placeholder: 'id 없이 렌더링',
+    variant: 'default'
   }
 };

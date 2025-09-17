@@ -2,6 +2,9 @@
 $colors: (
   black: #000,
   white: #fff,
+  paper-background: #fffbea,
+
+  // 그레이 스케일
   gray-200: #eeeeee,
   gray-300: #e0e0e0,
   gray-400: #bdbdbd,
@@ -11,11 +14,29 @@ $colors: (
   gray-800: #424242,
   gray-900: #212121,
 
-  // 빨강 버튼
-  red_btn: #d43c3c,
-  red_btn_active: #a12222,
-  red_btn_hover: #b92a2a,
-  red_btn_shadow: #7a1818
+  // 노란색 스케일
+  yellow-0: #ff0,
+  yellow-100: #fff9c4,
+  yellow-200: #fff59d,
+  yellow-300: #fff176,
+  yellow-400: #ffee58,
+  yellow-500: #ffeb3b,
+  yellow-600: #fdd835,
+  yellow-700: #fbc02d,
+  yellow-800: #f9a825,
+  yellow-900: #f57f17,
+
+  // 빨간색 스케일
+  red-0: #c00,
+  red-100: #ffcdd2,
+  red-200: #ef9a9a,
+  red-300: #e57373,
+  red-400: #ef5350,
+  red-500: #f44336,
+  red-600: #e53935,
+  red-700: #d32f2f,
+  red-800: #c62828,
+  red-900: #b71c1c
 );
 
 // 타이포그래피 변수
