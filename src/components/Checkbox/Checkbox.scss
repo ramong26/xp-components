@@ -1,7 +1,7 @@
 @use '../../styles/index' as s;
 @use 'sass:map';
 
-$paper-texture: url('../../assets/paper.png');
+$paper-texture: url('/assets/paper.png');
 
 .checkbox {
   display: flex;

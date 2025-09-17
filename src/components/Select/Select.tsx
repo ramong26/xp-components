@@ -21,6 +21,7 @@ const Select: React.FC<SelectProps> = ({
   const [focusedIdx, setFocusedIdx] = useState<number | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const ulRef = useRef<HTMLUListElement>(null);
+
   //  외부 영역 클릭 시 닫기
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

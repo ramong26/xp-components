@@ -1,54 +1,49 @@
 @use '../../styles/index' as s;
 @use 'sass:map';
 
+$paper-texture: url('/assets/paper.png');
 
 .input_wrapper {
   position: relative;
-  cursor: pointer;
-  width: 100%;
+  cursor: text;
+  width: fit-content;
+  height: fit-content;
+  @include s.flex-box(center, center, collumn);
 }
 
 // 인풋 필드
 .input_field {
   width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: none; 
-  background: s.color(gray-300); 
+  padding: 0.5rem 0.8rem;
+  font-family: 'Times New Roman', serif;
+  border: 2px solid s.color(black);
+  border-radius: 0;
+  background-color: s.color(paper-background);
+  background-image: $paper-texture;
+  background-size: cover;
   color: s.color(gray-900);
- 
-  box-shadow:
-    inset 1px 1px 0 0 s.color(white),
-    1px 1px 0 0 s.color(gray-600),
-    2px 2px 0 0 s.color(gray-900);
-  transition:
-    background-color 0.12s,
-    color 0.12s,
-    box-shadow 0.12s;
+  @include s.text-style-extended(md, 800, gray-900);
+  transition: all 0.15s ease-in-out;
+  box-sizing: border-box;
 
+  &:hover {
+    text-shadow: 1px 1px s.color(white);
+  }
 
-  &:hover,
   &:focus {
     outline: none;
-    background: s.color(gray-300);
-    color: s.color(gray-900);
-    box-shadow:
-      inset 1px 1px 0 0 s.color(white),
-      2px 2px 0 0 s.color(gray-900); 
+    text-shadow: 1px 1px s.color(white);
   }
 
   &:active {
-    background: s.color(gray-300);
+    border-color: s.color(black);
     color: s.color(gray-900);
-    box-shadow:
-      inset 1px 1px 0 0 s.color(white),
-      1px 1px 0 0 s.color(gray-600),
-      0px 0px 0 0 s.color(gray-900);
+    text-shadow: none;
   }
 
   @media (max-width: 640px) {
+    padding: 0.3rem 0.6rem;
     @include s.text-style-extended(md, 400, gray-900);
-    padding: 5px 13px;
   }
 }
 
@@ -57,21 +52,18 @@
   position: absolute;
   left: 8px;
   top: -10px;
+  font-family: 'Times New Roman', serif;
+  border: 2px solid s.color(black);
   @include s.text-style-extended(xs, 400, gray-900);
-  background: s.color(white);
+  background: s.color(paper-background);
   padding: 0 4px;
   pointer-events: none;
   transition: 0.2s;
-  box-shadow:
-    inset 1px 1px 0 0 s.color(white),
-    1px 1px 0 0 s.color(gray-600),
-    0px 0px 0 0 s.color(gray-900);
 }
 
 // focus 시 placeholder 스타일
 .input_field:focus + .input_placeholder,
 .input_field:not(:placeholder-shown) + .input_placeholder {
-
-  background: s.color(white);
+  background: s.color(paper-background);
   padding: 0 4px;
 }
