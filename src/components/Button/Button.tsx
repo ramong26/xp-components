@@ -1,6 +1,5 @@
 import React from 'react';
 import './Button.scss';
-import paperTexture from '../../../public/assets/paper.png';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -21,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={classNames}
       {...rest}
-      style={{ backgroundImage: `url(${paperTexture})` }}
+      style={{ backgroundImage: 'url(/assets/paper.png)' }}
     >
       {children}
     </button>
