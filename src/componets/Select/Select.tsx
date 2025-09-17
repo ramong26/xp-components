@@ -2,12 +2,12 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import type { KeyboardEvent } from 'react';
 import './Select.scss';
 
-export interface SelectProps {
+export interface SelectProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
   label: string;
   options: Array<{ label: string; value: string | number }>;
   value?: string | number;
   onChange?: (value: string | number) => void;
-  [key: string]: any;
 }
 
 const Select: React.FC<SelectProps> = ({
