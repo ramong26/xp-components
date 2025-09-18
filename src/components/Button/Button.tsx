@@ -1,9 +1,11 @@
 import React from 'react';
 import './Button.scss';
 
+export type Variant = 'default' | 'secondary';
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'secondary';
+  variant?: Variant;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -11,16 +13,11 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'default',
   ...rest
 }) => {
-  // btn, secondary 클래스 동적 조합
-  const classNames = ['btn', variant !== 'default' && variant]
-    .filter(Boolean)
-    .join(' ');
-
   return (
     <button
-      className={classNames}
+      className={`btn btn--${variant}`}
       {...rest}
-      style={{ backgroundImage: 'url(/assets/paper.png)' }}
+      style={{ backgroundImage: `url(/assets/paper.png)` }}
     >
       {children}
     </button>

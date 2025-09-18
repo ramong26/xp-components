@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "baseUrl": "src",
     "paths": {
+      "@assets/*": ["assets/*"],
       "@/*": ["./*"]
     },
     "strict": true,
