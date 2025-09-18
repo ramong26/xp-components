@@ -83,7 +83,7 @@ const Select: React.FC<SelectProps> = ({
       <button
         style={{ backgroundImage: `url(${paperTexture})` }}
         {...rest}
-        className="select_button"
+        className="select__button"
         onClick={() => setOpen((v) => !v)}
         type="button"
         aria-haspopup="listbox"
@@ -97,7 +97,7 @@ const Select: React.FC<SelectProps> = ({
       {open && (
         <ul
           style={{ backgroundImage: `url(${paperTexture})` }}
-          className="select_list"
+          className="select__list"
           role="listbox"
           id="select-list"
           onKeyDown={handleKeyDown}
@@ -106,7 +106,7 @@ const Select: React.FC<SelectProps> = ({
           {options.map((opt, idx) => (
             <li
               key={opt.value}
-              className={`select_item ${focusedIdx === idx ? 'focused' : ''}`}
+              className={`select__item ${focusedIdx === idx ? 'focused' : ''}`}
               role="option"
               tabIndex={focusedIdx === idx ? 0 : -1}
               aria-selected={value === opt.value}
