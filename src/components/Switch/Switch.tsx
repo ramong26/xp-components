@@ -4,7 +4,7 @@ import paperTexture from '../../assets/paper.png';
 
 
 export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  disabled?: boolean;
+
   label?: string;
 }
 
