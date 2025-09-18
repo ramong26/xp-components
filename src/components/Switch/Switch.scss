@@ -1,0 +1,58 @@
+@use '../../styles/index' as s;
+@use 'sass:map';
+
+$switch-width: 50px;
+$switch-height: 25px;
+$thumb-padding: 2px;
+$thumb-size: $switch-height - ($thumb-padding * 2); // 21px
+$thumb-checked-left: $switch-width - $thumb-size - $thumb-padding; // 27px
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+
+  .switch__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+
+  .switch__slider {
+    position: relative;
+    width: $switch-width;
+    height: $switch-height;
+    background: s.color(white);
+    border: 1px solid s.color(gray-600);
+    transition: background-color 0.3s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: $thumb-padding;
+      top: $thumb-padding;
+      width: $thumb-size;
+      height: $thumb-size;
+      background: s.color(red-300);
+      transition: left 0.3s;
+      box-shadow: 0 1px 4px s.color(gray-400);
+    }
+  }
+
+  .switch__input:checked + .switch__slider::before {
+    left: $thumb-checked-left;
+  }
+
+  .switch__label {
+    margin-left: 8px;
+    user-select: none;
+    @include s.text-style-extended(lg, 500, gray-900);
+  }
+
+  &.switch--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
