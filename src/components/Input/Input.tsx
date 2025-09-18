@@ -2,10 +2,13 @@ import React, { useId } from 'react';
 import './Input.scss';
 import paperTexture from '../../../public/assets/paper.png';
 
+export type Variant = 'default' | 'title';
+
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  variant?: 'default' | 'title';
+  variant?: Variant;
+  className?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -13,28 +16,26 @@ const Input: React.FC<InputProps> = ({
   variant = 'default',
   id: propId,
   type = 'text',
+  className = '',
   ...rest
 }) => {
   const reactId = useId();
   const id = propId || reactId;
 
-  // variant가 title일 때만 클래스 추가
-  const classNames = variant === 'title' ? 'input_field title' : 'input_field';
-
   return (
-    <div className="input_wrapper">
+    <div className={`input__wrapper`}>
       <input
-        style={{ backgroundImage: `url(${paperTexture})` }}
-        type={type}
-        className={classNames}
         id={id}
+        type={type}
+        className={`input input--${variant} ${className}`}
+        style={{ backgroundImage: `url(${paperTexture})` }}
         {...rest}
       />
       {variant === 'title' && label && (
         <label
-          style={{ backgroundImage: `url(${paperTexture})` }}
           htmlFor={id}
-          className="input_placeholder"
+          className="input__placeholder"
+          style={{ backgroundImage: `url(${paperTexture})` }}
         >
           {label}
         </label>

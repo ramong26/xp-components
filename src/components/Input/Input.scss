@@ -1,7 +1,7 @@
 @use '../../styles/index' as s;
 @use 'sass:map';
 
-.input_wrapper {
+.input__wrapper {
   position: relative;
   cursor: text;
   width: fit-content;
@@ -10,7 +10,7 @@
 }
 
 // 인풋 필드
-.input_field {
+.input {
   width: 100%;
   padding: 0.5rem 0.8rem;
   font-family: 'Times New Roman', serif;
@@ -38,14 +38,19 @@
     text-shadow: none;
   }
 
+  // variant가 title일 때
+  &--title {
+    padding-top: 1rem;
+  }
+
   @media (max-width: 640px) {
     padding: 0.3rem 0.6rem;
     @include s.text-style-extended(md, 400, gray-900);
   }
 }
 
-// placeholder 스타일
-.input_placeholder {
+// placeholder 스타일 (label)
+.input__placeholder {
   position: absolute;
   left: 8px;
   top: -10px;
@@ -59,8 +64,8 @@
 }
 
 // focus 시 placeholder 스타일
-.input_field:focus + .input_placeholder,
-.input_field:not(:placeholder-shown) + .input_placeholder {
+.input:focus + .input__placeholder,
+.input:not(:placeholder-shown) + .input__placeholder {
   background: s.color(paper-background);
   padding: 0 4px;
 }

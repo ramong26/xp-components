@@ -5,38 +5,42 @@
   background: s.color(paper-background);
   background-size: cover;
   font-family: 'Times New Roman', serif;
-  @include s.text-style-extended(md, 800, gray-900);
-  border: 2px solid s.color(black);
   padding: 6px 18px;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
-
-  &:hover,
-  &:focus,
-  &:active {
-    border-color: s.color(red-900);
-    color: s.color(red-900);
-    text-shadow: 1px 1px s.color(white);
-  }
 
   @media (max-width: 640px) {
     @include s.text-style-extended(sm, 800, gray-900);
     padding: 5px 12px;
   }
-}
 
-// Secondary button
-.btn.secondary {
-  background: s.color(red-500);
-  @include s.text-style-extended(md, 800, white);
-  border-color: s.color(gray-700);
-
-  &:hover,
-  &:focus,
-  &:active {
-    background: s.color(red-0);
-    color: s.color(black);
+  // default 버튼 스타일
+  &--default {
+    background: s.color(paper-background);
+    @include s.text-style-extended(md, 800, gray-900);
     border-color: s.color(black);
-    text-shadow: none;
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: s.color(red-900);
+      color: s.color(red-900);
+      text-shadow: 1px 1px s.color(white);
+    }
+  }
+
+  // secondary 버튼 스타일
+  &--secondary {
+    background: s.color(red-500);
+    @include s.text-style-extended(md, 800, white);
+    border-color: s.color(gray-700);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: s.color(red-0);
+      color: s.color(black);
+      border-color: s.color(black);
+      text-shadow: none;
+    }
   }
 }
