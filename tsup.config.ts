@@ -7,5 +7,9 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   outDir: 'dist',
   clean: true,
-  esbuildPlugins: [sassPlugin()]
+  esbuildPlugins: [sassPlugin()],
+  loader: {
+    '.png': 'file'
+  },
+  external: ['react', 'react-dom']
 });
