@@ -32,11 +32,7 @@
     color: s.color(gray-900);
 
     .tag__close {
-      background: none;
-      border: none;
-      cursor: pointer;
-      @include s.text-style-extended(md, 600);
-      padding: 0;
+      color: s.color(gray-900);
     }
   }
 
@@ -45,11 +41,7 @@
     color: s.color(green-900);
 
     .tag__close {
-      background: none;
-      border: none;
-      cursor: pointer;
-      @include s.text-style-extended(md, 600, green-900);
-      padding: 0;
+      color: s.color(green-900);
     }
   }
 
@@ -58,11 +50,7 @@
     color: s.color(orange-900);
 
     .tag__close {
-      background: none;
-      border: none;
-      cursor: pointer;
-      @include s.text-style-extended(md, 600, orange-900);
-      padding: 0;
+      color: s.color(orange-900);
     }
   }
 
@@ -71,11 +59,7 @@
     color: s.color(red-900);
 
     .tag__close {
-      background: none;
-      border: none;
-      cursor: pointer;
-      @include s.text-style-extended(md, 600, red-900);
-      padding: 0;
+      color: s.color(red-900);
     }
   }
 
@@ -85,15 +69,20 @@
     background: transparent;
 
     .tag__close {
-      background: none;
-      border: none;
-      cursor: pointer;
-      @include s.text-style-extended(md, 600, gray-900);
-      padding: 0;
+      color: s.color(gray-900);
     }
   }
 
   &__icon {
     margin-right: 0.25rem;
+  }
+
+  // 공통 닫기버튼 스타일
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    @include s.text-style-extended(md, 600);
+    padding: 0;
   }
 }
