@@ -1,6 +1,6 @@
 import React from 'react';
 import './Button.scss';
-import paperTexture from '../../../public/assets/paper.png';
+import paperTexture from '../../assets/paper.png';
 
 export type Variant = 'default' | 'secondary';
 

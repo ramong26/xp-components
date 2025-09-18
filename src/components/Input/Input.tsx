@@ -1,6 +1,6 @@
 import React, { useId } from 'react';
 import './Input.scss';
-import paperTexture from '../../../public/assets/paper.png';
+import paperTexture from '../../assets/paper.png';
 
 export type Variant = 'default' | 'title';
 
