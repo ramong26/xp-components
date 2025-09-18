@@ -1,5 +1,6 @@
 import React from 'react';
 import './Button.scss';
+import PaperStyle from '../../assets/paper.png';
 
 export type Variant = 'default' | 'secondary';
 
@@ -17,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`btn btn--${variant}`}
       {...rest}
-      style={{ backgroundImage: `url(/assets/paper.png)` }}
+      style={{ backgroundImage: `url(${PaperStyle})` }}
     >
       {children}
     </button>
