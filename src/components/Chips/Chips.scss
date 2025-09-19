@@ -5,7 +5,7 @@
   width: fit-content;
   height: fit-content;
   font-family: 'Times New Roman', serif;
-  padding: 0.3rem 0.8rem;
+  padding: 4px 8px;
   border: 2px solid s.color(black);
   border-radius: 0;
   background: s.color(paper-background);
@@ -13,7 +13,7 @@
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   @include s.flex-box(space-between, center, row);
-  @include s.text-style-extended(md, 800, gray-900);
+  @include s.text-style-extended(sm, 800, gray-900);
 
   &:hover {
     background-size: cover;
@@ -25,27 +25,109 @@
   &.selected {
     background: s.color(yellow-0);
     border-color: s.color(black);
-    @include s.text-style-extended(md, 900, gray-900);
+    @include s.text-style-extended(sm, 900, gray-900);
     text-transform: uppercase;
+  }
+
+  // sm 이상
+  @include s.mq(sm) {
+    padding: 6px 12px;
+    @include s.text-style-extended(md, 800, gray-900);
+
+    &.selected {
+      @include s.text-style-extended(md, 900, gray-900);
+    }
+  }
+
+  // md 이상
+  @include s.mq(md) {
+    padding: 8px 16px;
+    @include s.text-style-extended(md, 900, gray-900);
+
+    &.selected {
+      @include s.text-style-extended(md, 900, gray-900);
+    }
+  }
+
+  // lg 이상
+  @include s.mq(lg) {
+    padding: 10px 18px;
+    @include s.text-style-extended(lg, 900, gray-900);
+
+    &.selected {
+      @include s.text-style-extended(lg, 900, gray-900);
+    }
+  }
+
+  // xl 이상
+  @include s.mq(xl) {
+    padding: 12px 20px;
+    @include s.text-style-extended(lg, 900, gray-900);
+
+    &.selected {
+      @include s.text-style-extended(lg, 900, gray-900);
+    }
   }
 }
 
 .chip-label {
-  margin-right: 0.5rem;
+  margin-right: 4px;
+
+  @include s.mq(sm) {
+    margin-right: 6px;
+  }
+  @include s.mq(md) {
+    margin-right: 8px;
+  }
+  @include s.mq(lg) {
+    margin-right: 10px;
+  }
+  @include s.mq(xl) {
+    margin-right: 12px;
+  }
 }
 
 .chip-remove {
-  width: 1rem;
-  height: 1rem;
+  width: 14px;
+  height: 14px;
   border: 2px solid s.color(black);
   background: transparent;
   cursor: pointer;
   padding: 0;
   transition: all 0.15s ease-in-out;
   @include s.flex-box(center, center, row);
-  @include s.text-style-extended(md, 900, gray-900);
+  @include s.text-style-extended(sm, 900, gray-900);
+
   &:hover {
     color: s.color(red-0);
     background: s.color(white);
+  }
+
+  // sm 이상
+  @include s.mq(sm) {
+    width: 16px;
+    height: 16px;
+    @include s.text-style-extended(md, 900, gray-900);
+  }
+
+  // md 이상
+  @include s.mq(md) {
+    width: 18px;
+    height: 18px;
+    @include s.text-style-extended(md, 900, gray-900);
+  }
+
+  // lg 이상
+  @include s.mq(lg) {
+    width: 20px;
+    height: 20px;
+    @include s.text-style-extended(lg, 900, gray-900);
+  }
+
+  // xl 이상
+  @include s.mq(xl) {
+    width: 22px;
+    height: 22px;
+    @include s.text-style-extended(lg, 900, gray-900);
   }
 }

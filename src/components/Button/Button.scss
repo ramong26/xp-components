@@ -9,14 +9,37 @@
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   border: 2px solid;
-  @media (max-width: 640px) {
+
+  // 기본 폰트
+  @include s.text-style-extended(sm, 800, gray-900);
+  padding: 5px 12px;
+
+  // sm 이상
+  @include s.mq(sm) {
     @include s.text-style-extended(sm, 800, gray-900);
-    padding: 5px 12px;
+    padding: 6px 14px;
+  }
+
+  // md 이상
+  @include s.mq(md) {
+    @include s.text-style-extended(md, 800, gray-900);
+    padding: 8px 16px;
+  }
+
+  // lg 이상
+  @include s.mq(lg) {
+    @include s.text-style-extended(md, 800, gray-900);
+    padding: 10px 20px;
+  }
+
+  // xl 이상
+  @include s.mq(xl) {
+    @include s.text-style-extended(md, 800, gray-900);
+    padding: 12px 24px;
   }
 
   // default 버튼 스타일
   &--default {
-    @include s.text-style-extended(md, 800, gray-900);
     border-color: s.color(black);
     &:hover,
     &:focus,
@@ -31,8 +54,8 @@
   // secondary 버튼 스타일
   &--secondary {
     background: s.color(red-100);
-    @include s.text-style-extended(md, 800, red-900);
     border-color: s.color(red-900);
+    color: s.color(red-900);
 
     &:hover,
     &:focus,

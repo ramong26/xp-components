@@ -5,6 +5,7 @@ import Select from './Select';
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',
   component: Select,
+  tags: ['autodocs'],
   argTypes: {
     onChange: { action: 'changed' }
   }

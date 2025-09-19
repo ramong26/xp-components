@@ -32,6 +32,8 @@ const Select: React.FC<SelectProps> = ({
       }
     };
     window.addEventListener('mousedown', handleClickOutside);
+
+    // 클린업 누수 방지
     return () => {
       window.removeEventListener('mousedown', handleClickOutside);
     };
