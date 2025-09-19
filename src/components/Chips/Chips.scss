@@ -43,30 +43,18 @@
   @include s.mq(md) {
     padding: 8px 16px;
     @include s.text-style-extended(md, 900, gray-900);
-
-    &.selected {
-      @include s.text-style-extended(md, 900, gray-900);
-    }
   }
 
   // lg 이상
   @include s.mq(lg) {
     padding: 10px 18px;
     @include s.text-style-extended(lg, 900, gray-900);
-
-    &.selected {
-      @include s.text-style-extended(lg, 900, gray-900);
-    }
   }
 
   // xl 이상
   @include s.mq(xl) {
     padding: 12px 20px;
     @include s.text-style-extended(lg, 900, gray-900);
-
-    &.selected {
-      @include s.text-style-extended(lg, 900, gray-900);
-    }
   }
 }
 

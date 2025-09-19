@@ -28,13 +28,11 @@
 
   // lg 이상
   @include s.mq(lg) {
-    @include s.text-style-extended(md, 800, gray-900);
     padding: 10px 20px;
   }
 
   // xl 이상
   @include s.mq(xl) {
-    @include s.text-style-extended(md, 800, gray-900);
     padding: 12px 24px;
   }
 
