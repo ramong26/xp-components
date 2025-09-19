@@ -2,19 +2,18 @@
 @use 'sass:map';
 
 .checkbox {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  @include s.flex-box(center, center, row);
+  gap: 8px;
   font-family: 'Times New Roman', serif;
-  font-size: 16px;
+  @include s.text-style-extended(md, 400, gray-900);
   cursor: pointer;
 
   .checkbox_input {
     appearance: none;
     background: s.color(paper-background);
     background-size: cover;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     border: 2px solid s.color(black);
     cursor: pointer;
     transition: all 0.15s ease-in-out;
@@ -26,8 +25,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 12px;
-      color: s.color(black);
+      @include s.text-style-extended(xs, 400, gray-900);
     }
 
     &:hover,
@@ -37,8 +35,62 @@
 
     &:checked {
       background: s.color(paper-background);
-      background-size: cover;
       border-color: s.color(red-900);
+    }
+  }
+
+  // sm 이상
+  @include s.mq(sm) {
+    @include s.text-style-extended(lg, 400, gray-900);
+
+    .checkbox_input {
+      width: 16px;
+      height: 16px;
+
+      &:checked::after {
+        @include s.text-style-extended(xs, 400, gray-900);
+      }
+    }
+  }
+
+  // md 이상
+  @include s.mq(md) {
+    @include s.text-style-extended('2lg', 400, gray-900);
+
+    .checkbox_input {
+      width: 18px;
+      height: 18px;
+
+      &:checked::after {
+        @include s.text-style-extended(md, 400, gray-900);
+      }
+    }
+  }
+
+  // lg 이상
+  @include s.mq(lg) {
+    @include s.text-style-extended(xl, 400, gray-900);
+
+    .checkbox_input {
+      width: 20px;
+      height: 20px;
+
+      &:checked::after {
+        @include s.text-style-extended(lg, 400, gray-900);
+      }
+    }
+  }
+
+  // xl 이상
+  @include s.mq(xl) {
+    @include s.text-style-extended('2xl', 400, gray-900);
+    .checkbox_input {
+      width: 22px;
+      height: 22px;
+
+      &:checked::after {
+        @include s.text-style-extended('2lg', 400, gray-900);
+      }
     }
   }
 }

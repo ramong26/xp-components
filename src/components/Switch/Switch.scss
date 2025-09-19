@@ -1,11 +1,11 @@
 @use '../../styles/index' as s;
 @use 'sass:map';
 
-$switch-width: 50px;
-$switch-height: 25px;
+$switch-width: 40px;
+$switch-height: 20px;
 $thumb-padding: 2px;
-$thumb-size: $switch-height - ($thumb-padding * 2); // 21px
-$thumb-checked-left: $switch-width - $thumb-size - $thumb-padding; // 27px
+$thumb-size: $switch-height - ($thumb-padding * 2);
+$thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
 
 .switch {
   display: inline-flex;
@@ -46,13 +46,121 @@ $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding; // 27px
   }
 
   .switch__label {
-    margin-left: 8px;
+    margin-left: 6px;
     user-select: none;
-    @include s.text-style-extended(lg, 500, gray-900);
+    @include s.text-style-extended(sm, 500, gray-900);
   }
 
   &.switch--disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  // sm 이상
+  @include s.mq(sm) {
+    $switch-width: 50px;
+    $switch-height: 25px;
+    $thumb-size: $switch-height - ($thumb-padding * 2);
+    $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
+
+    .switch__slider {
+      width: $switch-width;
+      height: $switch-height;
+
+      &::before {
+        width: $thumb-size;
+        height: $thumb-size;
+      }
+    }
+
+    .switch__input:checked + .switch__slider::before {
+      left: $thumb-checked-left;
+    }
+
+    .switch__label {
+      margin-left: 8px;
+      @include s.text-style-extended(md, 500, gray-900);
+    }
+  }
+
+  // md 이상
+  @include s.mq(md) {
+    $switch-width: 60px;
+    $switch-height: 30px;
+    $thumb-size: $switch-height - ($thumb-padding * 2);
+    $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
+
+    .switch__slider {
+      width: $switch-width;
+      height: $switch-height;
+
+      &::before {
+        width: $thumb-size;
+        height: $thumb-size;
+      }
+    }
+
+    .switch__input:checked + .switch__slider::before {
+      left: $thumb-checked-left;
+    }
+
+    .switch__label {
+      margin-left: 10px;
+      @include s.text-style-extended(lg, 500, gray-900);
+    }
+  }
+
+  // lg 이상
+  @include s.mq(lg) {
+    $switch-width: 70px;
+    $switch-height: 35px;
+    $thumb-size: $switch-height - ($thumb-padding * 2);
+    $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
+
+    .switch__slider {
+      width: $switch-width;
+      height: $switch-height;
+
+      &::before {
+        width: $thumb-size;
+        height: $thumb-size;
+      }
+    }
+
+    .switch__input:checked + .switch__slider::before {
+      left: $thumb-checked-left;
+    }
+
+    .switch__label {
+      margin-left: 12px;
+      @include s.text-style-extended(lg, 600, gray-900);
+    }
+  }
+
+  // xl 이상
+  @include s.mq(xl) {
+    $switch-width: 80px;
+    $switch-height: 40px;
+    $thumb-size: $switch-height - ($thumb-padding * 2);
+    $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
+
+    .switch__slider {
+      width: $switch-width;
+      height: $switch-height;
+
+      &::before {
+        width: $thumb-size;
+        height: $thumb-size;
+      }
+    }
+
+    .switch__input:checked + .switch__slider::before {
+      left: $thumb-checked-left;
+    }
+
+    .switch__label {
+      margin-left: 14px;
+      @include s.text-style-extended(lg, 700, gray-900);
+    }
   }
 }

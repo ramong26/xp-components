@@ -3,6 +3,7 @@ import Chips from './Chips';
 const meta: Meta<typeof Chips> = {
   title: 'Components/Chips',
   component: Chips,
+  tags: ['autodocs'],
   argTypes: {
     onClick: { action: 'clicked' },
     onRemove: { action: 'removed' },

@@ -4,6 +4,7 @@ import Switch from './Switch';
 const meta: Meta<typeof Switch> = {
   title: 'Components/Switch',
   component: Switch,
+  tags: ['autodocs'],
   argTypes: {
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },
@@ -20,7 +21,7 @@ export const Default: Story = {
     label: '기본 스위치',
     id: 'switch-default',
     checked: false,
-    disabled: false,
+    disabled: false
   }
 };
 
@@ -29,7 +30,7 @@ export const Checked: Story = {
     label: '체크됨',
     id: 'switch-checked',
     checked: true,
-    disabled: false,
+    disabled: false
   }
 };
 
@@ -38,6 +39,6 @@ export const Disabled: Story = {
     label: '비활성화',
     id: 'switch-disabled',
     checked: false,
-    disabled: true,
+    disabled: true
   }
 };
