@@ -11,20 +11,39 @@
     appearance: none;
     width: 200px;
     height: 8px;
-    border: 2px solid s.color(black);
     border-radius: 0;
     background-size: cover;
     cursor: pointer;
 
-    &::-webkit-slider-thumb,
-    &::-moz-range-thumb {
-      width: 18px;
-      height: 18px;
+    // 트랙 (크롬/사파리)
+    &::-webkit-slider-runnable-track {
+      height: 8px;
+      border: 2px solid s.color(black);
+      background: s.color(white) url('../../assets/paper.png');
+      background-size: cover;
+    }
+
+    // 트랙 (파이어폭스)
+    &::-moz-range-track {
+      height: 8px;
+      border: 2px solid s.color(black);
+      background: s.color(white) url('../../assets/paper.png');
+      background-size: cover;
+    }
+
+    // 손잡이
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      margin-top: -8px;
+      appearance: none;
+      width: 20px;
+      height: 20px;
       border: 2px solid s.color(black);
       background: s.color(white) url('../../assets/paper.png');
       background-size: cover;
       cursor: pointer;
       transition: all 0.15s ease-in-out;
+      border-radius: 0;
 
       &:hover {
         background: s.color(yellow-600) url('../../assets/paper.png');
@@ -32,10 +51,14 @@
       }
     }
 
-    &::-moz-range-track {
-      height: 10px;
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
       border: 2px solid s.color(black);
+      background: s.color(white) url('../../assets/paper.png');
       background-size: cover;
+      cursor: pointer;
+      border-radius: 0;
     }
   }
 

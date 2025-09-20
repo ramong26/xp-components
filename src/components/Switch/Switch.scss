@@ -35,7 +35,7 @@ $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
       top: $thumb-padding;
       width: $thumb-size;
       height: $thumb-size;
-      background: s.color(red-300);
+      background: s.color(gray-500);
       transition: left 0.3s;
       box-shadow: 0 1px 4px s.color(gray-400);
     }
@@ -43,6 +43,7 @@ $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
 
   .switch__input:checked + .switch__slider::before {
     left: $thumb-checked-left;
+    background: s.color(red-300);
   }
 
   .switch__label {
