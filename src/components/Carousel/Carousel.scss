@@ -1,0 +1,170 @@
+@use '../../styles/index' as s;
+@use 'sass:map';
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid s.color(black);
+  background-image: url('../../assets/paper.png');
+  background-repeat: repeat;
+  background-size: auto;
+  font-family: 'Times New Roman', serif;
+
+  &__container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  &__item {
+    @include s.flex-box(space-around, center, row);
+    cursor: pointer;
+    flex: 0 0 100%;
+    padding: 20px;
+    text-align: center;
+    background-size: cover;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__image {
+    max-width: 100%;
+    height: auto;
+    background: s.color(white) url('../../assets/paper.png');
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    @include s.text-style-extended('2xl', 800, red-900);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    @include s.text-style-extended('lg', 400, gray-700);
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 12px;
+    @include s.text-style-extended('lg', 400, gray-700);
+    background: s.color(white) url('../../assets/paper.png');
+    background-size: cover;
+    border: 2px solid s.color(black);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background: s.color(yellow-200) url('../../assets/paper.png');
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    &--prev {
+      left: 10px;
+    }
+    &--next {
+      right: 10px;
+    }
+  }
+
+  &__indicators {
+    @include s.flex-box(center, center, row);
+    gap: 8px;
+    margin: 12px;
+  }
+
+  &__indicator {
+    width: 16px;
+    height: 16px;
+    border: 2px solid s.color(black);
+    background: s.color(white) url('../../assets/paper.png');
+    background-size: cover;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &.active {
+      background: s.color(yellow-600) url('../../assets/paper.png');
+      transform: scale(1.1);
+    }
+  }
+
+  // sm 이상
+  @include s.mq(sm) {
+    &__title {
+      font-size: 20px;
+    }
+    &__text {
+      font-size: 14px;
+    }
+    &__button {
+      padding: 4px 10px;
+      font-size: 14px;
+    }
+    &__indicator {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  // md 이상
+  @include s.mq(md) {
+    &__title {
+      font-size: 22px;
+    }
+    &__text {
+      font-size: 15px;
+    }
+    &__button {
+      padding: 6px 12px;
+      font-size: 15px;
+    }
+    &__indicator {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  // lg 이상
+  @include s.mq(lg) {
+    &__title {
+      font-size: 24px;
+    }
+    &__text {
+      font-size: 16px;
+    }
+    &__button {
+      padding: 8px 14px;
+      font-size: 16px;
+    }
+    &__indicator {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  // xl 이상
+  @include s.mq(xl) {
+    &__title {
+      font-size: 28px;
+    }
+    &__text {
+      font-size: 18px;
+    }
+    &__button {
+      padding: 10px 16px;
+      font-size: 18px;
+    }
+    &__indicator {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
