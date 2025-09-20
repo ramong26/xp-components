@@ -8,7 +8,8 @@ export interface CarouselItem {
   imageStyle?: React.CSSProperties;
   onClick?: () => void;
 }
-export interface CarouselProps {
+
+export interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
   items: CarouselItem[];
   autoPlay?: boolean;
   interval?: number;
@@ -21,29 +22,63 @@ const Carousel: React.FC<CarouselProps> = ({
   ...rest
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
 
+  // 터치 이벤트 핸들러
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const delta = touchStartX - touchEndX;
+
+    if (delta > 50) {
+      setCurrentIndex((prev) => (prev + 1) % items.length);
+    } else if (delta < -50) {
+      setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
   // 자동 슬라이드 기능
   useEffect(() => {
     if (!autoPlay) return;
     const timer = setInterval(() => {
-      setCurrentIndex((currentIndex + 1) % items.length);
+      setCurrentIndex((prev) => (prev + 1) % items.length);
     }, interval);
     return () => clearInterval(timer);
-  }, [autoPlay, interval, currentIndex, items.length]);
+  }, [autoPlay, interval, items.length]);
 
   return (
     <div className="carousel">
-      <div className="carousel__container" {...rest}>
+      <div
+        className="carousel__container"
+        {...rest}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <ul
           className="carousel__list"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {items.map((item, index) => (
-            <li key={index} className="carousel__item" onClick={item.onClick}>
+            <li
+              key={index}
+              className="carousel__item"
+              onClick={item.onClick}
+              aria-hidden={index !== currentIndex}
+            >
               {item.image && (
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={item.title ?? ''}
                   className="carousel__image"
                   style={item.imageStyle}
                 />
@@ -67,6 +102,7 @@ const Carousel: React.FC<CarouselProps> = ({
               index === currentIndex ? 'active' : ''
             }`}
             onClick={() => setCurrentIndex(index)}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

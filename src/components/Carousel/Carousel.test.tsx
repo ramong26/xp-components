@@ -44,12 +44,22 @@ test('renders Carousel and 클릭', async () => {
 test('자동 슬라이드 동작 (타이머 기반)', () => {
   vi.useFakeTimers();
   render(<Carousel items={items} autoPlay={true} interval={1000} />);
-  expect(screen.getByRole('heading', { name: /Slide 1/i })).toBeInTheDocument();
+
+  const indicators = screen.getAllByRole('button');
+
+  expect(indicators[0]).toHaveClass('active');
+
   vi.advanceTimersByTime(1000);
-  expect(screen.getByRole('heading', { name: /Slide 2/i })).toBeInTheDocument();
+  expect(indicators[0]).not.toHaveClass('active');
+  expect(indicators[1]).toHaveClass('active');
+
   vi.advanceTimersByTime(1000);
-  expect(screen.getByRole('heading', { name: /Slide 3/i })).toBeInTheDocument();
+  expect(indicators[1]).not.toHaveClass('active');
+  expect(indicators[2]).toHaveClass('active');
+
   vi.advanceTimersByTime(1000);
-  expect(screen.getByRole('heading', { name: /Slide 1/i })).toBeInTheDocument();
+  expect(indicators[2]).not.toHaveClass('active');
+  expect(indicators[0]).toHaveClass('active');
+
   vi.useRealTimers();
 });
