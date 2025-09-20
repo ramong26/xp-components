@@ -36,7 +36,9 @@ $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
       width: $thumb-size;
       height: $thumb-size;
       background: s.color(gray-500);
-      transition: left 0.3s;
+      transition:
+        left 0.3s ease,
+        background-color 0.3s ease;
       box-shadow: 0 1px 4px s.color(gray-400);
     }
   }
