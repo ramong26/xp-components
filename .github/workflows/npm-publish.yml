@@ -72,7 +72,7 @@ jobs:
       - name: Verify install with pnpm
         run: |
           echo "Testing install with pnpm..."
-          pnpm add --no-save $(realpath $PACKAGE_TGZ)
+          pnpm add $(realpath $PACKAGE_TGZ)
 
       - name: Verify install with npm
         run: |
