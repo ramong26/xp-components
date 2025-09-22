@@ -58,6 +58,11 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
+      - name: Bump version
+        run: |
+          npm version patch
+          git push origin HEAD --tags
+
       - name: Configure npm auth
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
