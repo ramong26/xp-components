@@ -103,5 +103,5 @@ jobs:
             Version: ${{ github.ref_name }}
             Package: recomponent
             Repository: ${{ github.repository }}
-          to: rlatndus21049@gmail.com # 여기에 실제 이메일 주소 입력
+          to: rlatndus21049@gmail.com
           from: rlatndus21049@gmail.com
