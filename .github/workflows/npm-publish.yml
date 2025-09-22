@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     tags:
-      - 'v*' # v로 시작하는 태그 푸시 시
+      - 'v*'
   pull_request:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
       - run: corepack enable
 
@@ -67,20 +67,22 @@ jobs:
         run: |
           echo "Packing the package..."
           PACKAGE_TGZ=$(pnpm pack | tail -n 1)
-          echo "PACKAGE_TGZ=$PACKAGE_TGZ" >> $GITHUB_ENV
+          echo "PACKAGE_TGZ=$(realpath $PACKAGE_TGZ)" >> $GITHUB_ENV
 
+      # pnpm으로 설치 테스트
       - name: Verify install with pnpm
         run: |
           echo "Testing install with pnpm..."
-          pnpm add $(realpath $PACKAGE_TGZ)
+          pnpm add $PACKAGE_TGZ
 
+      # npm으로 설치 테스트
       - name: Verify install with npm
         run: |
           echo "Testing install with npm..."
           mkdir npm-test
           cd npm-test
           npm init -y
-          npm install ../$(realpath $PACKAGE_TGZ)
+          npm install $PACKAGE_TGZ
 
       - name: Publish to npm
         run: pnpm publish --access public
