@@ -1,8 +1,39 @@
 {
-  "name": "xp-components",
+  "name": "@ramong26/xp-components",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ramong26/xp-components.git"
+  },
+  "homepage": "https://github.com/ramong26/xp-components",
+  "bugs": {
+    "url": "https://github.com/ramong26/xp-components/issues"
+  },
+  "author": "ramong23",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build:lib": "tsup src/index.ts --dts --format esm,cjs --out-dir dist --clean",
