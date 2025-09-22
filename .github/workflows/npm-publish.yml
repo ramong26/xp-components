@@ -52,23 +52,24 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Pack package for test
-        run: pnpm pack
+        id: pack
+        run: |
+          PACKAGE_TGZ=$(pnpm pack | tail -n 1)
+          echo "PACKAGE_TGZ=$PACKAGE_TGZ" >> $GITHUB_ENV
 
       - name: Test local install
-        run: npm install ./$(ls *.tgz | head -n 1)
+        run: npm install ./$PACKAGE_TGZ
 
       - name: Publish to npm
         run: pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # 배포 성공 후에만 Release 생성
       - name: Create GitHub Release
         uses: actions/github-script@v7
         with:
           script: |
             const tagName = context.ref.replace('refs/tags/', '');
-
             try {
               await github.rest.repos.createRelease({
                 owner: context.repo.owner,
@@ -87,7 +88,7 @@ jobs:
                 throw error;
               }
             }
-      # 이메일 알림
+
       - name: Send email
         uses: dawidd6/action-send-mail@v3
         with:
