@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { test, expect, vi } from 'vitest';
 
@@ -30,18 +30,24 @@ const items = [
 
 test('renders Carousel and 클릭', async () => {
   render(<Carousel items={items} autoPlay={false} />);
-  const slide1 = screen.getByRole('heading', { name: /Slide 1/i });
-  const slide2 = screen.getByRole('heading', { name: /Slide 2/i });
-  const slide3 = screen.getByRole('heading', { name: /Slide 3/i });
-  await userEvent.click(slide1);
+  const indicators = screen.getAllByRole('button');
+
+  expect(screen.getByRole('heading', { name: /Slide 1/i })).toBeInTheDocument();
+  await userEvent.click(screen.getByRole('heading', { name: /Slide 1/i }));
   expect(items[0].onClick).toHaveBeenCalled();
-  await userEvent.click(slide2);
+
+  await userEvent.click(indicators[1]);
+  expect(screen.getByRole('heading', { name: /Slide 2/i })).toBeInTheDocument();
+  await userEvent.click(screen.getByRole('heading', { name: /Slide 2/i }));
   expect(items[1].onClick).toHaveBeenCalled();
-  await userEvent.click(slide3);
+
+  await userEvent.click(indicators[2]);
+  expect(screen.getByRole('heading', { name: /Slide 3/i })).toBeInTheDocument();
+  await userEvent.click(screen.getByRole('heading', { name: /Slide 3/i }));
   expect(items[2].onClick).toHaveBeenCalled();
 });
 
-test('자동 슬라이드 동작 (타이머 기반)', () => {
+test('자동 슬라이드 동작 (타이머 기반)', async () => {
   vi.useFakeTimers();
   render(<Carousel items={items} autoPlay={true} interval={1000} />);
 
@@ -49,15 +55,24 @@ test('자동 슬라이드 동작 (타이머 기반)', () => {
 
   expect(indicators[0]).toHaveClass('active');
 
-  vi.advanceTimersByTime(1000);
+  await act(async () => {
+    vi.advanceTimersByTime(1000);
+  });
+
   expect(indicators[0]).not.toHaveClass('active');
   expect(indicators[1]).toHaveClass('active');
 
-  vi.advanceTimersByTime(1000);
+  await act(async () => {
+    vi.advanceTimersByTime(1000);
+  });
+
   expect(indicators[1]).not.toHaveClass('active');
   expect(indicators[2]).toHaveClass('active');
 
-  vi.advanceTimersByTime(1000);
+  await act(async () => {
+    vi.advanceTimersByTime(1000);
+  });
+
   expect(indicators[2]).not.toHaveClass('active');
   expect(indicators[0]).toHaveClass('active');
 
