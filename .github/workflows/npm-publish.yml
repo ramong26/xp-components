@@ -22,7 +22,7 @@ jobs:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
       - run: pnpm install --frozen-lockfile
-      - run: pnpm test --if-present
+      - run: pnpm test
 
   release:
     needs: test
@@ -75,7 +75,7 @@ jobs:
                 repo: context.repo.repo,
                 tag_name: tagName,
                 name: `Release ${tagName}`,
-                body: `🚀 Package successfully published to NPM!\n\n**Version:** ${tagName}\n**Package:** [recomponent](https://www.npmjs.com/package/recomponent)`,
+                body: `🚀 Package successfully published to NPM!\n\n**Version:** ${tagName}\n**Package:** [@ramong26/xp-components](https://www.npmjs.com/package/@ramong26/xp-components)`,
                 draft: false,
                 prerelease: tagName.includes('-')
               });
