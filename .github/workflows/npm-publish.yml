@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     tags:
-      - 'v*' # v로 시작하는 태그가 푸시될 때 (예: v1.0.0)
+      - 'v*' # v로 시작하는 태그 푸시 시
   pull_request:
 
 jobs:
@@ -12,15 +12,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+
       - run: corepack enable
+
       - name: Cache pnpm store
         uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
 
@@ -30,16 +34,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           registry-url: 'https://registry.npmjs.org'
+
       - run: corepack enable
+
+      - name: Use stable npm (downgrade from v10 to v9)
+        run: npm install -g npm@9
+
       - name: Cache pnpm store
         uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
@@ -51,14 +62,25 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Pack package for test
-        id: pack
+      # tgz 생성
+      - name: Pack the package
         run: |
+          echo "Packing the package..."
           PACKAGE_TGZ=$(pnpm pack | tail -n 1)
           echo "PACKAGE_TGZ=$PACKAGE_TGZ" >> $GITHUB_ENV
 
-      - name: Test local install
-        run: npm install ./$PACKAGE_TGZ
+      - name: Verify install with pnpm
+        run: |
+          echo "Testing install with pnpm..."
+          pnpm add --no-save $(realpath $PACKAGE_TGZ)
+
+      - name: Verify install with npm
+        run: |
+          echo "Testing install with npm..."
+          mkdir npm-test
+          cd npm-test
+          npm init -y
+          npm install ../$(realpath $PACKAGE_TGZ)
 
       - name: Publish to npm
         run: pnpm publish --access public
