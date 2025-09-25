@@ -26,6 +26,10 @@ jobs:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
       - run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm exec eslint . --ext .ts,.tsx
+      - name: Typecheck
+        run: pnpm exec tsc --noEmit
       - run: pnpm test
 
   release:

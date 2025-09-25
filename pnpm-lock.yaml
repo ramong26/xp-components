@@ -45,6 +45,9 @@ importers:
       eslint:
         specifier: ^9.36.0
         version: 9.36.0
+      eslint-plugin-storybook:
+        specifier: ^9.1.8
+        version: 9.1.8(eslint@9.36.0)(storybook@9.1.2(@testing-library/dom@10.4.1)(vite@7.1.7(sass@1.93.2)))(typescript@5.8.3)
       sass:
         specifier: ^1.90.0
         version: 1.93.2
@@ -1038,6 +1041,13 @@ packages:
   escape-string-regexp@4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
+
+  eslint-plugin-storybook@9.1.8:
+    resolution: {integrity: sha512-mEn5EVc7DAEvuwKMqUrIYUFZQJiQD3i5egLi1UJERQm91mDOMr5RdC4hjUF3tNE+WxQYD7QzH2j1qf36ML7V3g==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      eslint: '>=8'
+      storybook: ^9.1.8
 
   eslint-scope@8.4.0:
     resolution: {integrity: sha512-sNXOfKCn74rt8RICKMvJS7XKV/Xk9kA7DyJr8mJik3S7Cwgy3qlkkmyS2uQB3jiJg6VNdZd/pDBJu0nvG2NlTg==}
@@ -2895,6 +2905,15 @@ snapshots:
   escalade@3.2.0: {}
 
   escape-string-regexp@4.0.0: {}
+
+  eslint-plugin-storybook@9.1.8(eslint@9.36.0)(storybook@9.1.2(@testing-library/dom@10.4.1)(vite@7.1.7(sass@1.93.2)))(typescript@5.8.3):
+    dependencies:
+      '@typescript-eslint/utils': 8.44.1(eslint@9.36.0)(typescript@5.8.3)
+      eslint: 9.36.0
+      storybook: 9.1.2(@testing-library/dom@10.4.1)(vite@7.1.7(sass@1.93.2))
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   eslint-scope@8.4.0:
     dependencies:
