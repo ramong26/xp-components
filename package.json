@@ -9,8 +9,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./styles": "./dist/index.css"
   },
@@ -37,7 +36,7 @@
   "scripts": {
     "dev": "vite",
     "build:lib": "tsup src/index.ts --dts --format esm,cjs --out-dir dist --clean",
-    "build": "pnpm build:lib && vite build",
+    "build": "pnpm build:lib ",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
