@@ -10,7 +10,7 @@ export interface SelectProps
   onChange?: (value: string | number) => void;
 }
 
-export const Select: React.FC<SelectProps> = ({
+const Select: React.FC<SelectProps> = ({
   label,
   options,
   value,
@@ -125,3 +125,5 @@ export const Select: React.FC<SelectProps> = ({
     </div>
   );
 };
+
+export default Select;
