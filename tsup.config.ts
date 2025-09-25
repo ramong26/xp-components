@@ -11,5 +11,8 @@ export default defineConfig({
   loader: {
     '.png': 'file'
   },
-  external: ['react', 'react-dom']
+  external: ['react', 'react-dom'],
+  outExtension: ({ format }) => ({
+    js: format === 'esm' ? '.mjs' : '.cjs.js'
+  })
 });
