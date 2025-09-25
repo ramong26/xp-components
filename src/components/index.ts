@@ -1,3 +1,9 @@
-// export { default as Button } from './Button/Button';
-// export type { ButtonProps } from './Button/Button';
-export * from "./Button/Button";
+export * as Button from './Button/Button';
+export * as Carousel from './Carousel/Carousel';
+export * as Checkbox from './Checkbox/Checkbox';
+export * as Chips from './Chips/Chips';
+export * as Input from './Input/Input';
+export * as Select from './Select/Select';
+export * as Slider from './Slider/Slider';
+export * as Switch from './Switch/Switch';
+export * as Tag from './Tag/Tag';
