@@ -58,6 +58,7 @@
     "esbuild-plugin-sass": "^1.0.1",
     "eslint": "^9.36.0",
     "eslint-plugin-storybook": "^9.1.8",
+    "globals": "^16.4.0",
     "sass": "^1.90.0",
     "storybook": "9.1.2",
     "tsup": "^8.5.0",
