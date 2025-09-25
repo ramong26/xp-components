@@ -1,5 +1,7 @@
-ignoredBuiltDependencies:
-  - unrs-resolver
-
 packages:
-  - 'xp-components'
+  - xp-components
+
+ignoredBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - unrs-resolver
