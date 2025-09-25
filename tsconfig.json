@@ -17,6 +17,5 @@
     "noUnusedParameters": true,
     "esModuleInterop": true,
     "skipLibCheck": true
-  },
-  "include": ["src"]
+  }
 }
