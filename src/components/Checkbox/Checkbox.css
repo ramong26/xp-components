@@ -1,0 +1,117 @@
+@charset "UTF-8";
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-family: "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.71;
+  font-weight: 400;
+  color: #212121;
+  cursor: pointer;
+}
+.checkbox .checkbox_input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: #fffbea;
+  background-size: cover;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  position: relative;
+}
+.checkbox .checkbox_input:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #212121;
+}
+.checkbox .checkbox_input:hover, .checkbox .checkbox_input:active {
+  border-color: #b71c1c;
+}
+.checkbox .checkbox_input:checked {
+  background: #fffbea;
+  border-color: #b71c1c;
+}
+@media (min-width: 640px) {
+  .checkbox {
+    font-size: 16px;
+    line-height: 1.625;
+    font-weight: 400;
+    color: #212121;
+  }
+  .checkbox .checkbox_input {
+    width: 16px;
+    height: 16px;
+  }
+  .checkbox .checkbox_input:checked::after {
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #212121;
+  }
+}
+@media (min-width: 768px) {
+  .checkbox {
+    font-size: 18px;
+    line-height: 1.556;
+    font-weight: 400;
+    color: #212121;
+  }
+  .checkbox .checkbox_input {
+    width: 18px;
+    height: 18px;
+  }
+  .checkbox .checkbox_input:checked::after {
+    font-size: 14px;
+    line-height: 1.71;
+    font-weight: 400;
+    color: #212121;
+  }
+}
+@media (min-width: 1024px) {
+  .checkbox {
+    font-size: 20px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #212121;
+  }
+  .checkbox .checkbox_input {
+    width: 20px;
+    height: 20px;
+  }
+  .checkbox .checkbox_input:checked::after {
+    font-size: 16px;
+    line-height: 1.625;
+    font-weight: 400;
+    color: #212121;
+  }
+}
+@media (min-width: 1280px) {
+  .checkbox {
+    font-size: 24px;
+    line-height: 1.333;
+    font-weight: 400;
+    color: #212121;
+  }
+  .checkbox .checkbox_input {
+    width: 22px;
+    height: 22px;
+  }
+  .checkbox .checkbox_input:checked::after {
+    font-size: 18px;
+    line-height: 1.556;
+    font-weight: 400;
+    color: #212121;
+  }
+}/*# sourceMappingURL=Checkbox.css.map */
