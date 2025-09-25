@@ -16,19 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-
       - run: corepack enable
-
       - name: Cache pnpm store
         uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
 
@@ -38,35 +34,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-node@v3
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
-
       - run: corepack enable
-
       - name: Use stable npm (downgrade from v10 to v9)
         run: npm install -g npm@9
-
       - name: Cache pnpm store
         uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-
-      - name: Set Git user
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-
-      - name: Bump version
-        run: |
-          npm version patch
-          git push origin HEAD --tags
 
       - name: Configure npm auth
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
@@ -76,35 +57,26 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # tgz 생성
       - name: Pack the package
         run: |
-          echo "Packing the package..."
           PACKAGE_TGZ=$(pnpm pack | tail -n 1)
           echo "PACKAGE_TGZ=$(realpath $PACKAGE_TGZ)" >> $GITHUB_ENV
 
-      # pnpm 설치 테스트
       - name: Verify install with pnpm
-        run: |
-          echo "Testing install with pnpm..."
-          pnpm add $PACKAGE_TGZ
+        run: pnpm add $PACKAGE_TGZ
 
-      # npm 설치 테스트
       - name: Verify install with npm
         run: |
-          echo "Testing install with npm..."
           mkdir npm-test
           cd npm-test
           npm init -y
           npm install $PACKAGE_TGZ
 
-      # npm publish (Git 체크 비활성화)
       - name: Publish to npm
         run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # GitHub Release 생성
       - name: Create GitHub Release
         uses: actions/github-script@v7
         with:
@@ -130,13 +102,12 @@ jobs:
               }
             }
 
-      # Release 완료 이메일 발송
       - name: Send email
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          secure: false # STARTTLS (포트 587) → secure: false
+          secure: false
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
           subject: 🚀 Release ${{ github.ref_name }} completed
@@ -144,7 +115,7 @@ jobs:
             Your package has been successfully published to NPM!
 
             Version: ${{ github.ref_name }}
-            Package: recomponent
+            Package: xp-components
             Repository: ${{ github.repository }}
           to: rlatndus21049@gmail.com
           from: rlatndus21049@gmail.com
