@@ -49,7 +49,7 @@ const Slider: React.FC<SliderProps> = ({
       />
       {showValue && (
         <span
-          style={{ backgroundImage: `url(${paperTexture})` }}
+          style={{ backgroundImage: ` url(${paperTexture})` }}
           className="slider__value"
         >
           {internalValue}

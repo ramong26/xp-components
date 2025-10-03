@@ -5,13 +5,13 @@
   width: $width;
   height: $height;
   border: 2px solid s.color(black);
-  background: s.color(white) url('../../assets/paper.png');
+  background: s.color(white);
   background-size: cover;
   cursor: pointer;
   border-radius: 0;
   transition: all 0.15s ease-in-out;
   &:hover {
-    background: s.color(yellow-600) url('../../assets/paper.png');
+    background: s.color(yellow-600);
     transform: scale(1.1);
   }
 }
@@ -34,7 +34,7 @@
     &::-webkit-slider-runnable-track {
       height: 8px;
       border: 2px solid s.color(black);
-      background: s.color(white) url('../../assets/paper.png');
+      background: s.color(white);
       background-size: cover;
     }
 
@@ -42,7 +42,7 @@
     &::-moz-range-track {
       height: 8px;
       border: 2px solid s.color(black);
-      background: s.color(white) url('../../assets/paper.png');
+      background: s.color(white);
       background-size: cover;
     }
 
@@ -54,14 +54,14 @@
       width: 20px;
       height: 20px;
       border: 2px solid s.color(black);
-      background: s.color(white) url('../../assets/paper.png');
+      background: s.color(white);
       background-size: cover;
       cursor: pointer;
       transition: all 0.15s ease-in-out;
       border-radius: 0;
 
       &:hover {
-        background: s.color(yellow-600) url('../../assets/paper.png');
+        background: s.color(yellow-600);
         transform: scale(1.1);
       }
     }
@@ -70,13 +70,13 @@
       width: 20px;
       height: 20px;
       border: 2px solid s.color(black);
-      background: s.color(white) url('../../assets/paper.png');
+      background: s.color(white);
       background-size: cover;
       cursor: pointer;
       border-radius: 0;
       transition: all 0.15s ease-in-out;
       &:hover {
-        background: s.color(yellow-600) url('../../assets/paper.png');
+        background: s.color(yellow-600);
         transform: scale(1.1);
       }
     }
