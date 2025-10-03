@@ -1,7 +1,7 @@
 # @ramong26/xp-components
 
 React와 TypeScript로 만든 최소한의 UI 컴포넌트 라이브러리입니다.  
-React 18과 19 모두 호환됩니다.
+현재는 테스트 중입니다. 
 
 ---
 
