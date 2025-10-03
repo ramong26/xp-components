@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.scss';
 
-import paperTexture from '/assets/paper.png';
-
+const paperTexture = '/xp-components/assets/paper.png';
 export interface CarouselItem {
   title?: string;
   text?: string;

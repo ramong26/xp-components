@@ -5,7 +5,7 @@
   position: relative;
   overflow: hidden;
   border: 2px solid s.color(black);
-  background-image: url('../../assets/paper.png');
+  // background-image: url('../../assets/paper.png');
   background-repeat: repeat;
   background-size: auto;
   font-family: 'Times New Roman', serif;
@@ -36,7 +36,7 @@
   &__image {
     max-width: 100%;
     height: auto;
-    background: s.color(white) url('../../assets/paper.png');
+    // background: s.color(white) url('../../assets/paper.png');
     margin-bottom: 12px;
   }
 
@@ -56,14 +56,14 @@
     transform: translateY(-50%);
     padding: 6px 12px;
     @include s.text-style-extended('lg', 400, gray-700);
-    background: s.color(white) url('../../assets/paper.png');
+    // background: s.color(white) url('../../assets/paper.png');
     background-size: cover;
     border: 2px solid s.color(black);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      background: s.color(yellow-200) url('../../assets/paper.png');
+      // background: s.color(yellow-200) url('../../assets/paper.png');
       transform: translateY(-50%) scale(1.05);
     }
 
@@ -85,18 +85,18 @@
     width: 16px;
     height: 16px;
     border: 2px solid s.color(black);
-    background: s.color(white) url('../../assets/paper.png');
+    // background: s.color(white) url('../../assets/paper.png');
     background-size: cover;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
     &.active {
-      background: s.color(yellow-600) url('../../assets/paper.png');
+      // background: s.color(yellow-600) url('../../assets/paper.png');
       transform: scale(1.1);
     }
   }
 
-  //  sm 이상
+  // sm 이상
   @include s.mq(sm) {
     &__title {
       font-size: 20px;
@@ -114,7 +114,7 @@
     }
   }
 
-  //  md 이상
+  // md 이상
   @include s.mq(md) {
     &__title {
       font-size: 22px;
@@ -132,7 +132,7 @@
     }
   }
 
-  //  lg 이상
+  // lg 이상
   @include s.mq(lg) {
     &__title {
       font-size: 24px;
@@ -150,7 +150,7 @@
     }
   }
 
-  //  xl 이상
+  // xl 이상
   @include s.mq(xl) {
     &__title {
       font-size: 28px;
