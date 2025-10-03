@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.scss';
 
-import paperTexture from '../../assets/paper.png';
+// import paperTexture from '../../assets/paper.png';
 
 export interface CarouselItem {
   title?: string;
@@ -60,7 +60,7 @@ const Carousel: React.FC<CarouselProps> = ({
   return (
     <div
       className="carousel"
-      style={{ backgroundImage: `url(${paperTexture})` }}
+      // style={{ backgroundImage: `url(${paperTexture})` }}
     >
       <div
         className="carousel__container"
@@ -86,7 +86,7 @@ const Carousel: React.FC<CarouselProps> = ({
                   alt={item.title ?? ''}
                   className="carousel__image"
                   style={{
-                    backgroundImage: `url(${paperTexture})`,
+                    // backgroundImage: `url(${paperTexture})`,
                     ...item.imageStyle
                   }}
                 />
@@ -105,7 +105,7 @@ const Carousel: React.FC<CarouselProps> = ({
       <div className="carousel__indicators">
         {items.map((_, index) => (
           <button
-            style={{ backgroundImage: `url(${paperTexture})` }}
+            // style={{ backgroundImage: `url(${paperTexture})` }}
             key={index}
             className={`carousel__indicator ${
               index === currentIndex ? 'active' : ''
