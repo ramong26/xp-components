@@ -3,7 +3,7 @@
 exports[`Chips 컴포넌트 > UI 스냅샷 테스트 1`] = `
 <div
   class="chip selected"
-  style="background-image: url("/src/assets/paper.png");"
+  style="background-image: url("/xp-components/assets/paper.png");"
 >
   <span
     class="chip-label"
