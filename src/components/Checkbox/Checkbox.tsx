@@ -1,6 +1,7 @@
 import React from 'react';
 import './Checkbox.scss';
-import paperTexture from '../../assets/paper.png';
+
+const paperTexture = '/xp-components/assets/paper.png';
 
 export interface CheckboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
