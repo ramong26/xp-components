@@ -1,6 +1,7 @@
 import React from 'react';
 import './Chips.scss';
-import paperTexture from '../../assets/paper.png';
+
+const paperTexture = '/xp-components/assets/paper.png';
 
 export interface ChipsProps extends React.HTMLAttributes<HTMLDivElement> {
   onRemove?: () => void;

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Tag.scss';
-import paperTexture from '../../assets/paper.png';
+
+const paperTexture = '/xp-components/assets/paper.png';
 
 export type Variant = 'default' | 'success' | 'warning' | 'error' | 'outline';
 export type Size = 'sm' | 'md' | 'lg';

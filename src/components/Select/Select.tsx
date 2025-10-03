@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import type { KeyboardEvent } from 'react';
 import './Select.scss';
 
-import paperTexture from '../../assets/paper.png';
+const paperTexture = '/xp-components/assets/paper.png';
 
 export interface SelectProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Slider.scss';
-import paperTexture from '../../assets/paper.png';
+
+const paperTexture = '/xp-components/assets/paper.png';
 
 export interface SliderProps {
   min?: number;

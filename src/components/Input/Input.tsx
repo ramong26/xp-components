@@ -1,6 +1,7 @@
 import React, { useId } from 'react';
 import './Input.scss';
-import paperTexture from '../../assets/paper.png';
+
+const paperTexture = '/xp-components/assets/paper.png';
 
 export type Variant = 'default' | 'title';
 

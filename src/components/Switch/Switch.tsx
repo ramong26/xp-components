@@ -1,10 +1,10 @@
 import React from 'react';
 import './Switch.scss';
-import paperTexture from '../../assets/paper.png';
 
+const paperTexture = '/xp-components/assets/paper.png';
 
-export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
-
+export interface SwitchProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
@@ -21,7 +21,10 @@ const Switch: React.FC<SwitchProps> = ({ label, disabled, ...rest }) => {
         disabled={disabled}
         {...rest}
       />
-      <span className="switch__slider" style={{ backgroundImage: `url(${paperTexture})` }} />
+      <span
+        className="switch__slider"
+        style={{ backgroundImage: `url(${paperTexture})` }}
+      />
       {label && <span className="switch__label">{label}</span>}
     </label>
   );
