@@ -9,7 +9,9 @@ export default defineConfig({
   clean: true,
   esbuildPlugins: [sassPlugin()],
   loader: {
-    '.png': 'file'
+    '.png': 'file',
+    '.jpg': 'file',
+    '.svg': 'file'
   },
   external: ['react', 'react-dom', '*.png', '*.jpg', '*.svg'],
   outExtension: ({ format }) => ({

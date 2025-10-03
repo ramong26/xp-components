@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import type { KeyboardEvent } from 'react';
 import './Select.scss';
 
+import paperTexture from '../../assets/paper.png';
+
 export interface SelectProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
   label: string;
@@ -84,6 +86,7 @@ const Select: React.FC<SelectProps> = ({
       <button
         {...rest}
         className="select__button"
+        style={{ backgroundImage: `url(${paperTexture})` }}
         onClick={() => setOpen((v) => !v)}
         type="button"
         aria-haspopup="listbox"
@@ -97,6 +100,7 @@ const Select: React.FC<SelectProps> = ({
       {open && (
         <ul
           className="select__list"
+          style={{ backgroundImage: `url(${paperTexture})` }}
           role="listbox"
           id="select-list"
           onKeyDown={handleKeyDown}

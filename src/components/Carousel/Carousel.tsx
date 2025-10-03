@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.scss';
 
+import paperTexture from '../../assets/paper.png';
+
 export interface CarouselItem {
   title?: string;
   text?: string;
@@ -56,7 +58,10 @@ const Carousel: React.FC<CarouselProps> = ({
   }, [autoPlay, interval, items.length]);
 
   return (
-    <div className="carousel">
+    <div
+      className="carousel"
+      style={{ backgroundImage: `url(${paperTexture})` }}
+    >
       <div
         className="carousel__container"
         {...rest}
@@ -80,7 +85,10 @@ const Carousel: React.FC<CarouselProps> = ({
                   src={item.image}
                   alt={item.title ?? ''}
                   className="carousel__image"
-                  style={item.imageStyle}
+                  style={{
+                    backgroundImage: `url(${paperTexture})`,
+                    ...item.imageStyle
+                  }}
                 />
               )}
               <div className="carousel__content">
@@ -97,6 +105,7 @@ const Carousel: React.FC<CarouselProps> = ({
       <div className="carousel__indicators">
         {items.map((_, index) => (
           <button
+            style={{ backgroundImage: `url(${paperTexture})` }}
             key={index}
             className={`carousel__indicator ${
               index === currentIndex ? 'active' : ''

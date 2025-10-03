@@ -1,6 +1,7 @@
 import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { test, expect, vi } from 'vitest';
+import '@testing-library/jest-dom';
 
 import Carousel from './Carousel';
 

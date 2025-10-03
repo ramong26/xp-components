@@ -9,7 +9,6 @@
   box-sizing: border-box;
   padding: 6px 12px;
   background: #fffbea;
-  background-image: url("../../assets/paper.png");
   background-repeat: repeat;
   background-size: auto;
   font-family: "Times New Roman", serif;
@@ -72,7 +71,6 @@
   left: 0;
   width: 100%;
   background: #fffbea;
-  background-image: url("../../assets/paper.png");
   background-repeat: repeat;
   background-size: auto;
   font-family: "Times New Roman", serif;
