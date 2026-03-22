@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Slider.scss';
 
-const paperTexture = '/xp-components/assets/paper.png';
+export type SliderVariant = 'default' | 'accent';
 
 export interface SliderProps {
   min?: number;
@@ -10,6 +10,8 @@ export interface SliderProps {
   value?: number;
   onChange?: (value: number) => void;
   showValue?: boolean;
+  variant?: SliderVariant;
+  className?: string;
 }
 
 const Slider: React.FC<SliderProps> = ({
@@ -18,18 +20,18 @@ const Slider: React.FC<SliderProps> = ({
   step = 1,
   value,
   onChange,
-  showValue = true
+  showValue = true,
+  variant = 'default',
+  className
 }) => {
   const [internalValue, setInternalValue] = useState(value ?? min);
 
-  // 값 변경 핸들러
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value);
     setInternalValue(newValue);
     onChange?.(newValue);
   };
 
-  // 외부에서 value가 바뀔 때 동기화
   React.useEffect(() => {
     if (typeof value === 'number') {
       setInternalValue(value);
@@ -37,9 +39,8 @@ const Slider: React.FC<SliderProps> = ({
   }, [value]);
 
   return (
-    <div className="slider">
+    <div className={['slider', `slider--${variant}`, className].filter(Boolean).join(' ')}>
       <input
-        style={{ backgroundImage: `url(${paperTexture})` }}
         type="range"
         min={min}
         max={max}
@@ -48,14 +49,7 @@ const Slider: React.FC<SliderProps> = ({
         onChange={handleChange}
         className="slider__input"
       />
-      {showValue && (
-        <span
-          style={{ backgroundImage: ` url(${paperTexture})` }}
-          className="slider__value"
-        >
-          {internalValue}
-        </span>
-      )}
+      {showValue && <span className="slider__value">{internalValue}</span>}
     </div>
   );
 };

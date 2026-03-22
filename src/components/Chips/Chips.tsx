@@ -1,12 +1,13 @@
 import React from 'react';
 import './Chips.scss';
 
-const paperTexture = '/xp-components/assets/paper.png';
+export type ChipsVariant = 'default' | 'accent' | 'muted';
 
 export interface ChipsProps extends React.HTMLAttributes<HTMLDivElement> {
   onRemove?: () => void;
   selected?: boolean;
   onClick?: () => void;
+  variant?: ChipsVariant;
 }
 
 const Chips: React.FC<ChipsProps> = ({
@@ -14,30 +15,38 @@ const Chips: React.FC<ChipsProps> = ({
   onRemove,
   selected,
   onClick,
+  variant = 'default',
+  className,
   ...rest
 }) => {
+  const classes = ['chip', `chip--${variant}`, selected && 'is-selected', className].filter(Boolean).join(' ');
+
   return (
     <div
-      style={{ backgroundImage: `url(${paperTexture})` }}
-      className={`chip${selected ? ' selected' : ''}`}
+      className={classes}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
       onClick={onClick}
-      onKeyDown={(e) => onClick && e.key === 'Enter' && onClick()}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          onClick();
+        }
+      }}
       {...rest}
     >
-      <span className="chip-label">{children}</span>
+      <span className="chip__label">{children}</span>
       {onRemove && (
         <button
           type="button"
-          className="chip-remove"
+          className="chip__remove"
           aria-label="Remove chip"
           onClick={(e) => {
             e.stopPropagation();
             onRemove();
           }}
         >
-          ×
+          x
         </button>
       )}
     </div>

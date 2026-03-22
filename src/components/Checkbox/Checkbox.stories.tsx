@@ -5,21 +5,12 @@ const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
-  argTypes: { onClick: { action: 'changed' } }
+  argTypes: { onChange: { action: 'changed' } }
 };
 
 export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
-export const Default: Story = {
-  args: {
-    label: 'Checkbox Default'
-  }
-};
-
-export const Checked: Story = {
-  args: {
-    label: 'Checkbox Checked',
-    checked: true
-  }
-};
+export const Default: Story = { args: { label: 'Subscribe to weekend issue' } };
+export const Checked: Story = { args: { label: 'Marked as read', checked: true } };
+export const Accent: Story = { args: { label: 'Breaking alerts', variant: 'accent' } };

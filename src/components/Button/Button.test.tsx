@@ -1,13 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { test, expect, vi } from 'vitest';
-
+import { describe, expect, test, vi } from 'vitest';
 import Button from './Button';
 
-test('renders 버튼과 클릭', async () => {
-  const onClick = vi.fn();
-  render(<Button onClick={onClick}>클릭</Button>);
-  const btn = screen.getByRole('button', { name: /클릭/i });
-  await userEvent.click(btn);
-  expect(onClick).toHaveBeenCalled();
+describe('Button', () => {
+  test('renders and handles click', async () => {
+    const onClick = vi.fn();
+    render(<Button onClick={onClick}>Read</Button>);
+    await userEvent.click(screen.getByRole('button', { name: 'Read' }));
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('applies variant and size classes', () => {
+    render(<Button variant="danger" size="lg">Delete</Button>);
+    const button = screen.getByRole('button', { name: 'Delete' });
+    expect(button).toHaveClass('btn--danger');
+    expect(button).toHaveClass('btn--lg');
+  });
 });

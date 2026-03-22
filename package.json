@@ -1,92 +1,92 @@
 {
-    "name":  "@ramong26/xp-components",
-    "private":  false,
-    "version":  "1.0.16",
-    "type":  "module",
-    "main":  "dist/index.cjs",
-    "module":  "dist/index.mjs",
-    "types":  "dist/index.d.ts",
-    "exports":  {
-                    ".":  {
-                              "types":  "./dist/index.d.ts",
-                              "import":  "./dist/index.mjs",
-                              "require":  "./dist/index.cjs",
-                              "default":  "./dist/index.mjs"
-                          },
-                    "./styles":  "./dist/index.css",
-                    "./package.json":  "./package.json"
-                },
-    "files":  [
-                  "dist",
-                  "README.md"
-              ],
-    "keywords":  [
-                     "react",
-                     "components",
-                     "ui",
-                     "typescript"
-                 ],
-    "repository":  {
-                       "type":  "git",
-                       "url":  "https://github.com/ramong26/xp-components.git"
-                   },
-    "homepage":  "https://github.com/ramong26/xp-components",
-    "bugs":  {
-                 "url":  "https://github.com/ramong26/xp-components/issues"
-             },
-    "author":  "ramong23",
-    "license":  "MIT",
-    "sideEffects":  [
-                        "**/*.css"
-                    ],
-    "publishConfig":  {
-                          "access":  "public"
-                      },
-    "scripts":  {
-                    "dev":  "vite",
-                    "build:lib":  "tsup src/index.ts --dts --format cjs,esm --out-dir dist --clean",
-                    "build":  "pnpm build:lib",
-                    "storybook":  "storybook dev -p 6006",
-                    "build-storybook":  "storybook build",
-                    "test":  "vitest",
-                    "pack":  "pnpm build:lib \u0026\u0026 npm pack",
-                    "lint":  "pnpm exec eslint . --ext .ts,.tsx",
-                    "typecheck":  "tsc --noEmit",
-                    "prepack":  "pnpm build:lib"
-                },
-    "peerDependencies":  {
-                             "react":  "\u003e=18 \u003c20",
-                             "react-dom":  "\u003e=18 \u003c20"
-                         },
-    "devDependencies":  {
-                            "@eslint/js":  "^9.36.0",
-                            "@storybook/react-vite":  "^9.1.8",
-                            "@testing-library/jest-dom":  "^6.8.0",
-                            "@types/jsdom":  "^21.1.7",
-                            "@types/react":  "^18.3.24",
-                            "@types/react-dom":  "^18.3.7",
-                            "@typescript-eslint/eslint-plugin":  "^8.44.1",
-                            "@typescript-eslint/parser":  "^8.44.1",
-                            "@vitejs/plugin-react":  "^5.0.3",
-                            "esbuild-plugin-sass":  "^1.0.1",
-                            "eslint":  "^9.36.0",
-                            "eslint-plugin-react":  "^7.37.5",
-                            "eslint-plugin-react-hooks":  "^5.2.0",
-                            "eslint-plugin-react-refresh":  "^0.4.21",
-                            "eslint-plugin-storybook":  "^9.1.8",
-                            "globals":  "^16.4.0",
-                            "happy-dom":  "^18.0.1",
-                            "jsdom":  "^27.0.0",
-                            "sass":  "^1.90.0",
-                            "storybook":  "9.1.2",
-                            "tsup":  "^8.5.0",
-                            "typescript":  "~5.8.3",
-                            "typescript-eslint":  "^8.44.1",
-                            "vite":  "^7.1.2",
-                            "vitest":  "^3.2.4"
-                        },
-    "dependencies":  {
-                         "@testing-library/react":  "^16.3.0",
-                         "@testing-library/user-event":  "^14.6.1"
-                     }
+    "name": "@ramong26/xp-components",
+    "private": false,
+    "version": "1.0.17",
+    "type": "module",
+    "main": "dist/index.cjs",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs",
+            "default": "./dist/index.mjs"
+        },
+        "./styles": "./dist/index.css",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "keywords": [
+        "react",
+        "components",
+        "ui",
+        "typescript"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ramong26/xp-components.git"
+    },
+    "homepage": "https://github.com/ramong26/xp-components",
+    "bugs": {
+        "url": "https://github.com/ramong26/xp-components/issues"
+    },
+    "author": "ramong23",
+    "license": "MIT",
+    "sideEffects": [
+        "**/*.css"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build:lib": "tsup src/index.ts --dts --format cjs,esm --out-dir dist --clean",
+        "build": "pnpm build:lib",
+        "storybook": "storybook dev -p 6006",
+        "build-storybook": "storybook build",
+        "test": "vitest",
+        "pack": "pnpm build:lib && npm pack",
+        "lint": "pnpm exec eslint . --ext .ts,.tsx",
+        "typecheck": "tsc --noEmit",
+        "prepack": "pnpm build:lib"
+    },
+    "peerDependencies": {
+        "react": ">=18 <20",
+        "react-dom": ">=18 <20"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.36.0",
+        "@storybook/react-vite": "^9.1.8",
+        "@testing-library/jest-dom": "^6.8.0",
+        "@types/jsdom": "^21.1.7",
+        "@types/react": "^18.3.24",
+        "@types/react-dom": "^18.3.7",
+        "@typescript-eslint/eslint-plugin": "^8.44.1",
+        "@typescript-eslint/parser": "^8.44.1",
+        "@vitejs/plugin-react": "^5.0.3",
+        "esbuild-plugin-sass": "^1.0.1",
+        "eslint": "^9.36.0",
+        "eslint-plugin-react": "^7.37.5",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "eslint-plugin-react-refresh": "^0.4.21",
+        "eslint-plugin-storybook": "^9.1.8",
+        "globals": "^16.4.0",
+        "happy-dom": "^18.0.1",
+        "jsdom": "^27.0.0",
+        "sass": "^1.90.0",
+        "storybook": "9.1.2",
+        "tsup": "^8.5.0",
+        "typescript": "~5.8.3",
+        "typescript-eslint": "^8.44.1",
+        "vite": "^7.1.2",
+        "vitest": "^3.2.4"
+    },
+    "dependencies": {
+        "@testing-library/react": "^16.3.0",
+        "@testing-library/user-event": "^14.6.1"
+    }
 }

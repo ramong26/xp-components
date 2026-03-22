@@ -1,42 +1,26 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { test, expect, vi } from 'vitest';
-
+import { describe, expect, test, vi } from 'vitest';
 import Tag from './Tag';
 
-test('Tag span 렌더링 확인', () => {
-  render(<Tag>테스트</Tag>);
-  const tag = screen.getByText(/테스트/i);
-  expect(tag).toBeInTheDocument();
-});
+describe('Tag', () => {
+  test('renders label and icon', () => {
+    render(<Tag icon={<span data-testid="icon">*</span>}>Featured</Tag>);
+    expect(screen.getByText('Featured')).toBeInTheDocument();
+    expect(screen.getByTestId('icon')).toBeInTheDocument();
+  });
 
-test('Tag icon 렌더링 확인', () => {
-  render(<Tag icon={<span data-testid="icon">⭐</span>}>아이콘</Tag>);
-  const icon = screen.getByTestId('icon');
-  expect(icon).toBeInTheDocument();
-});
+  test('calls onClose when closable', async () => {
+    const onClose = vi.fn();
+    render(<Tag closable onClose={onClose}>Archive</Tag>);
+    await userEvent.click(screen.getByRole('button', { name: 'Close tag' }));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
 
-test('Tag closable 버튼 클릭 이벤트', async () => {
-  const onClose = vi.fn();
-  render(
-    <Tag closable onClose={onClose}>
-      닫기 테스트
-    </Tag>
-  );
-
-  const closeBtn = screen.getByRole('button', { name: /닫기/i });
-  await userEvent.click(closeBtn);
-  expect(onClose).toHaveBeenCalledTimes(1);
-});
-
-test('Tag variant, size class 적용', () => {
-  render(
-    <Tag variant="success" size="lg">
-      클래스 테스트
-    </Tag>
-  );
-
-  const tag = screen.getByText(/클래스 테스트/i);
-  expect(tag).toHaveClass('tag--success');
-  expect(tag).toHaveClass('tag--lg');
+  test('applies variant and size classes', () => {
+    render(<Tag variant="feature" size="lg">Lead</Tag>);
+    const tag = screen.getByText('Lead').closest('.tag');
+    expect(tag).toHaveClass('tag--feature');
+    expect(tag).toHaveClass('tag--lg');
+  });
 });

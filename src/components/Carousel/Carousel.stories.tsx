@@ -1,6 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Carousel from './Carousel';
 
+const items = [
+  {
+    image: 'https://wikidocs.net/images/page/279778/boardwalk.jpg',
+    title: 'Morning Edition',
+    text: 'A bold hero panel with paper texture and loud headlines.'
+  },
+  {
+    image: 'https://wikidocs.net/images/page/279778/boardwalk.jpg',
+    title: 'Evening Dispatch',
+    text: 'Use the headline variant when the artwork should feel editorial.'
+  },
+  {
+    image: 'https://wikidocs.net/images/page/279778/boardwalk.jpg',
+    title: 'Sunday Review',
+    text: 'Indicators keep the interaction tactile and obvious.'
+  }
+];
+
 const meta: Meta<typeof Carousel> = {
   title: 'Components/Carousel',
   component: Carousel,
@@ -8,34 +26,7 @@ const meta: Meta<typeof Carousel> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof Carousel>;
 
-export const Default: Story = {
-  args: {
-    items: [
-      {
-        image: 'https://wikidocs.net/images/page/279778/boardwalk.jpg',
-        title: 'Slide 1',
-        text: 'This is the first slide.',
-        onClick: () => alert('Slide 1 clicked!'),
-        imageStyle: { width: '500px', height: 'auto' }
-      },
-      {
-        image: 'https://wikidocs.net/images/page/279778/boardwalk.jpg',
-        title: 'Slide 2',
-        text: 'This is the second slide.',
-        onClick: () => alert('Slide 2 clicked!'),
-        imageStyle: { width: '500px', height: 'auto' }
-      },
-      {
-        image: 'https://wikidocs.net/images/page/279778/boardwalk.jpg',
-        title: 'Slide 3',
-        text: 'This is the third slide.',
-        onClick: () => alert('Slide 3 clicked!'),
-        imageStyle: { width: '500px', height: 'auto' }
-      }
-    ],
-    autoPlay: true
-  }
-};
+export const Default: Story = { args: { items, autoPlay: true } };
+export const Headline: Story = { args: { items, variant: 'headline' } };

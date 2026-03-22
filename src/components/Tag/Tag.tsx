@@ -1,9 +1,7 @@
 import React from 'react';
 import './Tag.scss';
 
-const paperTexture = '/xp-components/assets/paper.png';
-
-export type Variant = 'default' | 'success' | 'warning' | 'error' | 'outline';
+export type Variant = 'default' | 'feature' | 'success' | 'warning' | 'error' | 'outline';
 export type Size = 'sm' | 'md' | 'lg';
 
 export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -25,21 +23,12 @@ const Tag: React.FC<TagProps> = ({
   ...rest
 }) => {
   return (
-    <span
-      {...rest}
-      className={`tag tag--${variant} tag--${size} ${className}`}
-      style={{ backgroundImage: `url(${paperTexture})` }}
-    >
+    <span {...rest} className={['tag', `tag--${variant}`, `tag--${size}`, className].filter(Boolean).join(' ')}>
       {icon && <span className="tag__icon">{icon}</span>}
-      {children}
+      <span className="tag__label">{children}</span>
       {closable && (
-        <button
-          type="button"
-          onClick={onClose}
-          className="tag__close"
-          aria-label="닫기"
-        >
-          ×
+        <button type="button" onClick={onClose} className="tag__close" aria-label="Close tag">
+          x
         </button>
       )}
     </span>
