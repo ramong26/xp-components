@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: corepack enable
@@ -38,13 +38,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
       - run: corepack enable
-      - name: Use stable npm (downgrade from v10 to v9)
-        run: npm install -g npm@9
       - name: Cache pnpm store
         uses: actions/cache@v3
         with:
@@ -52,9 +51,6 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-
-      - name: Configure npm auth
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Verify npm user
         run: npm whoami
@@ -93,14 +89,14 @@ jobs:
                 repo: context.repo.repo,
                 tag_name: tagName,
                 name: `Release ${tagName}`,
-                body: `🚀 Package successfully published to NPM!\n\n**Version:** ${tagName}\n**Package:** [@ramong26/xp-components](https://www.npmjs.com/package/@ramong26/xp-components)`,
+                body: `Package successfully published to NPM!\n\n**Version:** ${tagName}\n**Package:** [@ramong26/xp-components](https://www.npmjs.com/package/@ramong26/xp-components)`,
                 draft: false,
                 prerelease: tagName.includes('-')
               });
-              console.log(`✅ Release ${tagName} created successfully!`);
+              console.log(`Release ${tagName} created successfully!`);
             } catch (error) {
               if (error.status === 422) {
-                console.log(`⚠️ Release ${tagName} already exists`);
+                console.log(`Release ${tagName} already exists`);
               } else {
                 throw error;
               }
@@ -114,7 +110,7 @@ jobs:
           secure: false
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
-          subject: 🚀 Release ${{ github.ref_name }} completed
+          subject: Release ${{ github.ref_name }} completed
           body: |
             Your package has been successfully published to NPM!
 
