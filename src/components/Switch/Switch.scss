@@ -1,169 +1,72 @@
 @use '../../styles/index' as s;
-@use 'sass:map';
 
-$switch-width: 40px;
-$switch-height: 20px;
-$thumb-padding: 2px;
-$thumb-size: $switch-height - ($thumb-padding * 2);
-$thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
+$switch-width: 54px;
+$switch-height: 26px;
+$thumb-size: 18px;
 
 .switch {
   display: inline-flex;
   align-items: center;
+  gap: 0.55rem;
   cursor: pointer;
   position: relative;
+  font-family: 'Times New Roman', serif;
 
-  .switch__input {
+  &__input {
     opacity: 0;
     width: 0;
     height: 0;
     position: absolute;
   }
 
-  .switch__slider {
+  &__slider {
+    @include s.xp-paper('../../assets/paper.png');
     position: relative;
     width: $switch-width;
     height: $switch-height;
-    background: s.color(white);
-    border: 1px solid s.color(gray-600);
-    transition: background-color 0.3s;
+    transition: background-color 0.2s ease;
+    box-shadow: 3px 3px 0 s.color(black);
 
     &::before {
       content: '';
       position: absolute;
-      left: $thumb-padding;
-      top: $thumb-padding;
+      left: 3px;
+      top: 2px;
       width: $thumb-size;
       height: $thumb-size;
       background: s.color(gray-500);
-      transition:
-        left 0.3s ease,
-        background-color 0.3s ease;
-      box-shadow: 0 1px 4px s.color(gray-400);
+      border: 2px solid s.color(black);
+      transition: left 0.2s ease, background-color 0.2s ease;
     }
   }
 
-  .switch__input:checked + .switch__slider::before {
-    left: $thumb-checked-left;
-    background: s.color(red-300);
+  &__input:checked + .switch__slider::before {
+    left: calc(100% - #{$thumb-size} - 5px);
+    background: s.color(yellow-200);
   }
 
-  .switch__label {
-    margin-left: 6px;
-    user-select: none;
-    @include s.text-style-extended(sm, 500, gray-900);
+  &__input:focus-visible + .switch__slider {
+    outline: 2px solid s.color(black);
+    outline-offset: 2px;
   }
 
-  &.switch--disabled {
+  &__label {
+    @include s.text-style-extended(md, 700, gray-900);
+  }
+
+  &--accent {
+    .switch__slider {
+      border-color: s.color(red-900);
+      box-shadow: 3px 3px 0 s.color(red-900);
+    }
+
+    .switch__input:checked + .switch__slider::before {
+      background: s.color(red-300);
+    }
+  }
+
+  &--disabled {
     cursor: not-allowed;
-    opacity: 0.5;
-  }
-
-  // sm 이상
-  @include s.mq(sm) {
-    $switch-width: 50px;
-    $switch-height: 25px;
-    $thumb-size: $switch-height - ($thumb-padding * 2);
-    $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
-
-    .switch__slider {
-      width: $switch-width;
-      height: $switch-height;
-
-      &::before {
-        width: $thumb-size;
-        height: $thumb-size;
-      }
-    }
-
-    .switch__input:checked + .switch__slider::before {
-      left: $thumb-checked-left;
-    }
-
-    .switch__label {
-      margin-left: 8px;
-      @include s.text-style-extended(md, 500, gray-900);
-    }
-  }
-
-  // md 이상
-  @include s.mq(md) {
-    $switch-width: 60px;
-    $switch-height: 30px;
-    $thumb-size: $switch-height - ($thumb-padding * 2);
-    $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
-
-    .switch__slider {
-      width: $switch-width;
-      height: $switch-height;
-
-      &::before {
-        width: $thumb-size;
-        height: $thumb-size;
-      }
-    }
-
-    .switch__input:checked + .switch__slider::before {
-      left: $thumb-checked-left;
-    }
-
-    .switch__label {
-      margin-left: 10px;
-      @include s.text-style-extended(lg, 500, gray-900);
-    }
-  }
-
-  // lg 이상
-  @include s.mq(lg) {
-    $switch-width: 70px;
-    $switch-height: 35px;
-    $thumb-size: $switch-height - ($thumb-padding * 2);
-    $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
-
-    .switch__slider {
-      width: $switch-width;
-      height: $switch-height;
-
-      &::before {
-        width: $thumb-size;
-        height: $thumb-size;
-      }
-    }
-
-    .switch__input:checked + .switch__slider::before {
-      left: $thumb-checked-left;
-    }
-
-    .switch__label {
-      margin-left: 12px;
-      @include s.text-style-extended(lg, 600, gray-900);
-    }
-  }
-
-  // xl 이상
-  @include s.mq(xl) {
-    $switch-width: 80px;
-    $switch-height: 40px;
-    $thumb-size: $switch-height - ($thumb-padding * 2);
-    $thumb-checked-left: $switch-width - $thumb-size - $thumb-padding;
-
-    .switch__slider {
-      width: $switch-width;
-      height: $switch-height;
-
-      &::before {
-        width: $thumb-size;
-        height: $thumb-size;
-      }
-    }
-
-    .switch__input:checked + .switch__slider::before {
-      left: $thumb-checked-left;
-    }
-
-    .switch__label {
-      margin-left: 14px;
-      @include s.text-style-extended(lg, 700, gray-900);
-    }
+    opacity: 0.55;
   }
 }

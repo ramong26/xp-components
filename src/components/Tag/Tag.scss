@@ -1,164 +1,65 @@
 @use '../../styles/index' as s;
-@use 'sass:map';
 
 .tag {
+  @include s.xp-paper('../../assets/paper.png');
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.35rem;
   font-family: 'Times New Roman', serif;
-  @include s.text-style-extended(sm, 800, gray-900);
 
   &--sm {
-    padding: 4px 8px;
-    font-size: 12px;
-    border-radius: 4px;
+    padding: 0.2rem 0.45rem;
+    @include s.text-style-extended(xs, 800, gray-900);
   }
 
   &--md {
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 6px;
+    padding: 0.3rem 0.65rem;
+    @include s.text-style-extended(sm, 800, gray-900);
   }
 
   &--lg {
-    padding: 8px 16px;
-    font-size: 16px;
-    border-radius: 8px;
+    padding: 0.4rem 0.85rem;
+    @include s.text-style-extended(md, 900, gray-900);
   }
 
-  // variants
-  &--default {
-    background: s.color(gray-200);
-    color: s.color(gray-900);
+  &--feature {
+    background-color: s.color(yellow-100);
+    border-color: s.color(red-900);
+    color: s.color(red-900);
+    box-shadow: 3px 3px 0 s.color(red-900);
+  }
 
-    .tag__close {
-      color: s.color(gray-900);
-    }
+  &--default {
+    background-color: s.color(gray-200);
   }
 
   &--success {
-    background: s.color(green-100);
+    background-color: s.color(green-100);
     color: s.color(green-900);
-
-    .tag__close {
-      color: s.color(green-900);
-    }
   }
 
   &--warning {
-    background: s.color(orange-100);
+    background-color: s.color(orange-100);
     color: s.color(orange-900);
-
-    .tag__close {
-      color: s.color(orange-900);
-    }
   }
 
   &--error {
-    background: s.color(red-100);
+    background-color: s.color(red-100);
     color: s.color(red-900);
-
-    .tag__close {
-      color: s.color(red-900);
-    }
   }
 
   &--outline {
-    border: 1px solid s.color(gray-400);
-    color: s.color(gray-900);
-    background: transparent;
-
-    .tag__close {
-      color: s.color(gray-900);
-    }
+    background-image: none;
+    background-color: transparent;
+    border-color: s.color(gray-500);
   }
 
-  &__icon {
-    margin-right: 4px;
-  }
-
-  // 공통 닫기버튼 스타일
   &__close {
-    background: none;
     border: none;
+    background: transparent;
     cursor: pointer;
-    @include s.text-style-extended(sm, 600);
     padding: 0;
-  }
-
-  // sm 이상
-  @include s.mq(sm) {
-    &--sm {
-      padding: 5px 10px;
-      font-size: 13px;
-    }
-    &--md {
-      padding: 7px 14px;
-      font-size: 15px;
-    }
-    &--lg {
-      padding: 9px 18px;
-      font-size: 17px;
-    }
-    &__close {
-      @include s.text-style-extended(md, 600);
-    }
-  }
-
-  // md 이상
-  @include s.mq(md) {
-    &--sm {
-      padding: 6px 12px;
-      font-size: 14px;
-    }
-    &--md {
-      padding: 8px 16px;
-      font-size: 16px;
-    }
-    &--lg {
-      padding: 10px 20px;
-      font-size: 18px;
-    }
-    &__close {
-      @include s.text-style-extended(md, 700);
-    }
-  }
-
-  // lg 이상
-  @include s.mq(lg) {
-    &--sm {
-      padding: 7px 14px;
-      font-size: 15px;
-    }
-    &--md {
-      padding: 9px 18px;
-      font-size: 17px;
-    }
-    &--lg {
-      padding: 11px 22px;
-      font-size: 19px;
-    }
-    &__close {
-      @include s.text-style-extended(lg, 700);
-    }
-  }
-
-  // xl 이상
-  @include s.mq(xl) {
-    &--sm {
-      padding: 8px 16px;
-      font-size: 16px;
-    }
-    &--md {
-      padding: 10px 20px;
-      font-size: 18px;
-    }
-    &--lg {
-      padding: 12px 24px;
-      font-size: 20px;
-    }
-    &__close {
-      @include s.text-style-extended(lg, 800);
-    }
+    font: inherit;
+    color: inherit;
   }
 }

@@ -1,96 +1,63 @@
 @use '../../styles/index' as s;
-@use 'sass:map';
 
 .checkbox {
-  @include s.flex-box(center, center, row);
-  gap: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: 'Times New Roman', serif;
-  @include s.text-style-extended(md, 400, gray-900);
   cursor: pointer;
+  @include s.text-style-extended(md, 700, gray-900);
 
-  .checkbox_input {
-    appearance: none;
-    background: s.color(paper-background);
-    background-size: cover;
-    width: 14px;
-    height: 14px;
-    border: 2px solid s.color(black);
-    cursor: pointer;
-    transition: all 0.15s ease-in-out;
+  &__input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__box {
+    @include s.xp-paper('../../assets/paper.png');
+    @include s.xp-pressable();
+    @include s.xp-focus-ring();
     position: relative;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: inline-block;
+  }
 
-    &:checked::after {
-      content: '✓';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      @include s.text-style-extended(xs, 400, gray-900);
-    }
+  &__label {
+    user-select: none;
+  }
 
-    &:hover,
-    &:active {
+  &__input:focus-visible + .checkbox__box {
+    outline: 2px solid s.color(black);
+    outline-offset: 2px;
+  }
+
+  &__input:checked + .checkbox__box::after {
+    content: 'X';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include s.text-style-extended(sm, 900, gray-900);
+  }
+
+  &__input:disabled + .checkbox__box,
+  &__input:disabled ~ .checkbox__label {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  &--accent {
+    .checkbox__box {
       border-color: s.color(red-900);
+      box-shadow: 3px 3px 0 s.color(red-900);
     }
 
-    &:checked {
-      background: s.color(paper-background);
-      border-color: s.color(red-900);
-    }
-  }
-
-  // sm 이상
-  @include s.mq(sm) {
-    @include s.text-style-extended(lg, 400, gray-900);
-
-    .checkbox_input {
-      width: 16px;
-      height: 16px;
-
-      &:checked::after {
-        @include s.text-style-extended(xs, 400, gray-900);
-      }
-    }
-  }
-
-  // md 이상
-  @include s.mq(md) {
-    @include s.text-style-extended('2lg', 400, gray-900);
-
-    .checkbox_input {
-      width: 18px;
-      height: 18px;
-
-      &:checked::after {
-        @include s.text-style-extended(md, 400, gray-900);
-      }
-    }
-  }
-
-  // lg 이상
-  @include s.mq(lg) {
-    @include s.text-style-extended(xl, 400, gray-900);
-
-    .checkbox_input {
-      width: 20px;
-      height: 20px;
-
-      &:checked::after {
-        @include s.text-style-extended(lg, 400, gray-900);
-      }
-    }
-  }
-
-  // xl 이상
-  @include s.mq(xl) {
-    @include s.text-style-extended('2xl', 400, gray-900);
-    .checkbox_input {
-      width: 22px;
-      height: 22px;
-
-      &:checked::after {
-        @include s.text-style-extended('2lg', 400, gray-900);
-      }
+    .checkbox__input:checked + .checkbox__box {
+      background-color: s.color(red-100);
     }
   }
 }

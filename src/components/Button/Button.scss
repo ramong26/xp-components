@@ -1,66 +1,89 @@
 @use '../../styles/index' as s;
-@use 'sass:map';
 
 .btn {
-  background: s.color(paper-background);
-  background-size: cover;
+  @include s.xp-paper('../../assets/paper.png');
+  @include s.xp-pressable();
+  @include s.xp-focus-ring();
   font-family: 'Times New Roman', serif;
-  padding: 6px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
   cursor: pointer;
-  transition: all 0.15s ease-in-out;
-  border: 2px solid;
 
-  // 기본 폰트
-  @include s.text-style-extended(sm, 800, gray-900);
-  padding: 5px 12px;
-
-  // sm 이상
-  @include s.mq(sm) {
+  &--sm {
     @include s.text-style-extended(sm, 800, gray-900);
-    padding: 6px 14px;
+    padding: 0.35rem 0.75rem;
   }
 
-  // md 이상
-  @include s.mq(md) {
+  &--md {
     @include s.text-style-extended(md, 800, gray-900);
-    padding: 8px 16px;
+    padding: 0.5rem 0.95rem;
   }
 
-  // lg 이상
-  @include s.mq(lg) {
-    padding: 10px 20px;
+  &--lg {
+    @include s.text-style-extended(lg, 900, gray-900);
+    padding: 0.7rem 1.25rem;
   }
 
-  // xl 이상
-  @include s.mq(xl) {
-    padding: 12px 24px;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+    transform: none;
   }
 
-  // default 버튼 스타일
-  &--default {
-    border-color: s.color(black);
+  &--primary {
+    background-color: s.color(paper-background);
+  }
+
+  &--secondary {
+    background-color: s.color(red-100);
+    border-color: s.color(red-900);
+    color: s.color(red-900);
+    box-shadow: 3px 3px 0 s.color(red-900);
+
     &:hover,
-    &:focus,
+    &:focus-visible,
     &:active {
-      background: s.color(gray-200);
-      border-color: s.color(gray-900);
-      color: s.color(gray-900);
-      text-shadow: 1px 1px s.color(white);
+      background-color: s.color(red-900);
+      color: s.color(white);
+      border-color: s.color(black);
+      box-shadow: 2px 2px 0 s.color(black);
     }
   }
 
-  // secondary 버튼 스타일
-  &--secondary {
-    background: s.color(red-100);
-    border-color: s.color(red-900);
-    color: s.color(red-900);
+  &--ghost {
+    background-image: none;
+    background-color: transparent;
+    color: s.color(gray-900);
+    border-color: s.color(gray-900);
+    box-shadow: 3px 3px 0 s.color(gray-400);
 
     &:hover,
-    &:focus,
+    &:focus-visible,
     &:active {
-      background: s.color(red-900);
-      color: s.color(white);
+      background-color: s.color(gray-100);
+      color: s.color(black);
       border-color: s.color(black);
+      box-shadow: 2px 2px 0 s.color(gray-500);
+    }
+  }
+
+  &--danger {
+    background-color: s.color(red-700);
+    background-image: none;
+    color: s.color(white);
+    border-color: s.color(black);
+    box-shadow: 3px 3px 0 s.color(red-900);
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      background-color: s.color(red-900);
+      border-color: s.color(black);
+      box-shadow: 2px 2px 0 s.color(black);
     }
   }
 }

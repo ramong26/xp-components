@@ -2,29 +2,23 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import type { KeyboardEvent } from 'react';
 import './Select.scss';
 
-const paperTexture = '/xp-components/assets/paper.png';
+export type SelectVariant = 'default' | 'accent';
 
-export interface SelectProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
+export interface SelectProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
   label: string;
   options: Array<{ label: string; value: string | number }>;
   value?: string | number;
   onChange?: (value: string | number) => void;
+  variant?: SelectVariant;
+  className?: string;
 }
 
-const Select: React.FC<SelectProps> = ({
-  label,
-  options,
-  value,
-  onChange,
-  ...rest
-}) => {
+const Select: React.FC<SelectProps> = ({ label, options, value, onChange, variant = 'default', className, ...rest }) => {
   const [open, setOpen] = useState(false);
   const [focusedIdx, setFocusedIdx] = useState<number | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const ulRef = useRef<HTMLUListElement>(null);
 
-  //  외부 영역 클릭 시 닫기
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (rootRef.current && !rootRef.current.contains(event.target as Node)) {
@@ -33,26 +27,24 @@ const Select: React.FC<SelectProps> = ({
       }
     };
     window.addEventListener('mousedown', handleClickOutside);
+    return () => window.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
-    // 클린업 누수 방지
-    return () => {
-      window.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [open]);
-
-  // 키보드 내비게이션
   const handleKeyDown = (e: KeyboardEvent) => {
+    if (!open && (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      setOpen(true);
+      return;
+    }
+
     if (!open) return;
+
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setFocusedIdx((prev) =>
-        prev === null || prev === options.length - 1 ? 0 : prev + 1
-      );
+      setFocusedIdx((prev) => (prev === null || prev === options.length - 1 ? 0 : prev + 1));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setFocusedIdx((prev) =>
-        prev === null || prev === 0 ? options.length - 1 : prev - 1
-      );
+      setFocusedIdx((prev) => (prev === null || prev === 0 ? options.length - 1 : prev - 1));
     } else if (e.key === 'Enter' && focusedIdx !== null) {
       e.preventDefault();
       const selectedOption = options[focusedIdx];
@@ -65,28 +57,22 @@ const Select: React.FC<SelectProps> = ({
     }
   };
 
-  // 옵션이 열리면 첫 번째 옵션에 포커스
   useEffect(() => {
     if (open) setFocusedIdx(0);
     else setFocusedIdx(null);
   }, [open]);
 
-  // 옵션이 열리면 ul에 포커스
   useEffect(() => {
     if (open) ulRef.current?.focus();
   }, [open]);
 
-  // useMemo으로 selectedLabel 계산
-  const selectedLabel = useMemo(
-    () => options.find((opt) => opt.value === value)?.label ?? label,
-    [options, value, label]
-  );
+  const selectedLabel = useMemo(() => options.find((opt) => opt.value === value)?.label ?? label, [options, value, label]);
+
   return (
-    <div className="select" ref={rootRef}>
+    <div className={['select', `select--${variant}`, className].filter(Boolean).join(' ')} ref={rootRef}>
       <button
         {...rest}
         className="select__button"
-        style={{ backgroundImage: `url(${paperTexture})` }}
         onClick={() => setOpen((v) => !v)}
         type="button"
         aria-haspopup="listbox"
@@ -95,21 +81,17 @@ const Select: React.FC<SelectProps> = ({
         aria-label={label}
         onKeyDown={handleKeyDown}
       >
-        {selectedLabel}
+        <span>{selectedLabel}</span>
+        <span className="select__caret" aria-hidden="true">
+          {open ? '-' : '+'}
+        </span>
       </button>
       {open && (
-        <ul
-          className="select__list"
-          style={{ backgroundImage: `url(${paperTexture})` }}
-          role="listbox"
-          id="select-list"
-          onKeyDown={handleKeyDown}
-          ref={ulRef}
-        >
+        <ul className="select__list" role="listbox" id="select-list" onKeyDown={handleKeyDown} ref={ulRef} tabIndex={-1}>
           {options.map((opt, idx) => (
             <li
               key={opt.value}
-              className={`select__item ${focusedIdx === idx ? 'focused' : ''}`}
+              className={`select__item ${focusedIdx === idx ? 'is-focused' : ''} ${value === opt.value ? 'is-selected' : ''}`}
               role="option"
               tabIndex={focusedIdx === idx ? 0 : -1}
               aria-selected={value === opt.value}

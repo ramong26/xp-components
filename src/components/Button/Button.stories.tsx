@@ -26,3 +26,18 @@ export const Secondary: Story = {
     color: 'rgba(255, 0, 0, 1)'
   }
 };
+
+export const Ghost: Story = {
+  args: {
+    children: 'Button',
+    variant: 'ghost',
+    color: 'rgba(255, 0, 0, 1)'
+  }
+};
+export const Danger: Story = {
+  args: {
+    children: 'Button',
+    variant: 'danger',
+    color: 'rgb55, 0, 0, 1)'
+  }
+};

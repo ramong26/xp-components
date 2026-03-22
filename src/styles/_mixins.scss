@@ -2,7 +2,6 @@
 @use 'variables' as v;
 @use 'functions' as f;
 
-// 반응형 미디어 쿼리
 @mixin mq($breakpoint) {
   @if map.has-key(v.$breakpoints, $breakpoint) {
     @media (min-width: map.get(v.$breakpoints, $breakpoint)) {
@@ -11,7 +10,6 @@
   }
 }
 
-// 기본 타이포
 @mixin text-style($size, $weight: 400) {
   $scale: map.get(v.$typography, $size);
   @if $scale == null {
@@ -22,7 +20,6 @@
   font-weight: $weight;
 }
 
-// 확장 타이포 (색상)
 @mixin text-style-extended($size, $weight: 400, $color: null) {
   @include text-style($size, $weight);
   @if $color != null {
@@ -30,10 +27,41 @@
   }
 }
 
-// flex
 @mixin flex-box($justify: center, $align: center, $direction: row) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
   align-items: $align;
+}
+
+@mixin xp-paper($image-path, $background: paper-background, $text: gray-900, $border: black) {
+  background-color: f.color($background);
+  background-image: url($image-path);
+  background-repeat: repeat;
+  background-size: auto;
+  color: f.color($text);
+  border: 2px solid f.color($border);
+}
+
+@mixin xp-pressable($shadow: black, $hover-background: null) {
+  box-shadow: 3px 3px 0 f.color($shadow);
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 f.color($shadow);
+    @if $hover-background != null {
+      background-color: f.color($hover-background);
+    }
+  }
+}
+
+@mixin xp-focus-ring($color: black) {
+  &:focus-visible {
+    outline: 2px solid f.color($color);
+    outline-offset: 2px;
+  }
 }
