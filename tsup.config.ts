@@ -15,6 +15,8 @@ export default defineConfig({
   },
   external: ['react', 'react-dom', '*.png', '*.jpg', '*.svg'],
   outExtension: ({ format }) => ({
-    js: format === 'esm' ? '.mjs' : '.cjs.js'
+    js: format === 'esm' ? '.mjs' : '.cjs'
   })
 });
+
+
